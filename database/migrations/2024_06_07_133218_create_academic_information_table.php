@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('academic_information', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_academic_information')->primary();
+            $table->bigIncrements('id_academic_information');
             $table->string('university', 50);
             $table->string('faculty', 30);
             $table->string('study_program', 30);
             $table->string('nim', 10);
             $table->string('study_year', 10);
             $table->integer('now_curriculum');
-            $table->decimal('last_ipk', 3, 2);  // example: 3.75
-            $table->decimal('now_ipk', 3, 2);   // example: 3.85
+            $table->decimal('last_ipk', 3, 2);
+            $table->integer('now_ukt');
             $table->timestamps();
         });
     }
