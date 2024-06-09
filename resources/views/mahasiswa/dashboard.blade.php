@@ -46,16 +46,16 @@
                             <table class="table table-striped">
                                 <tbody>
                                     <tr>
-                                        <th><strong>Nomor Induk Siswa Nasional (NISN)</strong></th>
-                                        <td>0035745632</td>    
+                                        <th><strong>Nomor Induk Mahasiswa (NIM)</strong></th>
+                                        <td>{{ $student->academic_information->nim }}</td>    
                                     </tr>     
                                     <tr>
                                         <th><strong>Nama</strong></th>
                                         <td>Adza Zarif Nur Iskandar</td>    
                                     </tr>
                                     <tr>
-                                        <th><strong>Nomor Induk Kependudukan (NIK)</strong></th>
-                                        <td>350522140203</td>    
+                                        <th><strong>Program Studi</strong></th>
+                                        <td>{{ $student->academic_information->study_program }}</td>    
                                     </tr>  
                                 </tbody>    
                             </table>
