@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('timelines', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_timeline')->primary();
+            $table->bigIncrements('id_timeline');
             $table->string('title_timeline', 50);
             $table->string('deadline', 30);
             $table->text('description');
