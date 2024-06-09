@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\TimelineController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/',[MainController::class,'index'])->name('landing-page');
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
