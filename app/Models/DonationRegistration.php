@@ -9,7 +9,7 @@ class DonationRegistration extends Model
 {
     use HasFactory;
 
-    protected $table = 'donation_registration';
+    protected $table = 'donation_registrations';
     protected $fillable = [
         'student_id', 'status', 'id_periode',
     ];

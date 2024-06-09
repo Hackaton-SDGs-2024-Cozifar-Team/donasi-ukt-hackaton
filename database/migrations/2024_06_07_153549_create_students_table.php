@@ -16,11 +16,13 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_academic_information');
             $table->unsignedBigInteger('id_family_information');
+            $table->unsignedBigInteger('id_financial_information');
             $table->unsignedBigInteger('id_additional_information');
 
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_academic_information')->references('id_academic_information')->on('academic_information')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_family_information')->references('id_family_information')->on('family_information')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_financial_information')->references('id_financial_information')->on('financial_information')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_additional_information')->references('id_additional_information')->on('additional_information')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
