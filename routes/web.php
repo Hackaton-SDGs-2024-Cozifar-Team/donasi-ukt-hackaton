@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\TimelineController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Mahasiswa\DashboardMahasiswaController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,4 +32,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/periode',[PeriodController::class,'index'])->name('periode.index');
     Route::get('/user',[UserController::class,'index'])->name('user.index');
     Route::get('/report',[ReportController::class,'index'])->name('report.index');
+});
+
+Route::prefix('mahasiswa')->group(function () {
+    Route::get('/dashboard',[DashboardMahasiswaController::class,'index'])->name('mahasiswa.index');
 });

@@ -59,5 +59,12 @@
           <div data-i18n="Analytics">Laporan</div>
         </a>
       </li>
+
+      <li class="menu-item @active('mahasiswa.index')">
+        <a href="{{ route('mahasiswa.index') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Analytics">Dashboard Mahasiswa</div>
+        </a>
+      </li>
     </ul>
   </aside>
