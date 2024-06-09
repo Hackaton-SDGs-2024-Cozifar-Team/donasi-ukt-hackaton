@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('fullname', 30);
             $table->string('place_birth', 20);
             $table->date('date_birth');
-            $table->enum('gender', ['male', 'female'])->change();
-            // $table->unsignedBigInteger('nik', 16)->unique();
+            $table->enum('gender', ['male', 'female'])->default('male');
             $table->string('email', 30)->unique();
-            $table->string('password', 8);
-            $table->enum('role', ['admin', 'recipient', 'donatur'])->change();
+            $table->string('password', 60);
+            $table->char('no_telp', 13);
+            $table->enum('role', ['admin', 'recipient', 'donatur'])->default('admin');
             $table->rememberToken();
             $table->timestamps();
         });
