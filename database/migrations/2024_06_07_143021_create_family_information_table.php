@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('family_information', function (Blueprint $table) {
             $table->bigIncrements('id_family_information');
+            $table->string('number_kk', 30);
+            $table->string('nik_headof_family', 30);
             $table->string('father_name', 30);
             $table->string('father_living_status', 15);
             $table->string('father_last_education', 15);

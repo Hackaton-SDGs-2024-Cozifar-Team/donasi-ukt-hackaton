@@ -9,35 +9,34 @@
             <ul class="nav nav-tabs nav-fill" role="tablist">
                 <li class="nav-item">
                     <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-                        data-bs-target="#navs-justified-home" aria-controls="navs-justified-home" aria-selected="true">
+                        data-bs-target="#navs-biodata" aria-controls="navs-biodata" aria-selected="true">
                         <i class="tf-icons bx bx-user"></i> Biodata
-                        <span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-label-danger">3</span>
                     </button>
                 </li>
                 <li class="nav-item">
                     <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                        data-bs-target="#navs-justified-profile" aria-controls="navs-justified-profile"
+                        data-bs-target="#navs-keluarga" aria-controls="navs-keluarga"
                         aria-selected="false">
                         <i class="tf-icons bx bx-home"></i> Keluarga
                     </button>
                 </li>
                 <li class="nav-item">
                     <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                        data-bs-target="#navs-justified-messages" aria-controls="navs-justified-messages"
+                        data-bs-target="#navs-ekonomi" aria-controls="navs-ekonomi"
                         aria-selected="false">
                         <i class="tf-icons bx bx-message-square"></i> Ekonomi
                     </button>
                 </li>
                 <li class="nav-item">
                     <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                        data-bs-target="#navs-justified-messages" aria-controls="navs-justified-messages"
+                        data-bs-target="#navs-tambahan" aria-controls="navs-tambahan"
                         aria-selected="false">
                         <i class="tf-icons bx bx-message-square"></i> Tambahan
                     </button>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="navs-justified-home" role="tabpanel">
+                <div class="tab-pane fade show active" id="navs-biodata" role="tabpanel">
                     <div class="d-flex gap-3">
                         
                         <img src="{{ asset('images/profile.JPG') }}" width="400px" alt="">
@@ -57,32 +56,143 @@
                                         <th><strong>Program Studi</strong></th>
                                         <td>{{ $student->academic_information->study_program }}</td>    
                                     </tr>  
+                                    <tr>
+                                        <th><strong>Fakultas</strong></th>
+                                        <td>{{ $student->academic_information->faculty }}</td>    
+                                    </tr>  
+                                    <tr>
+                                        <th><strong>Tahun awal masuk</strong></th>
+                                        <td>{{ $student->academic_information->study_year }}</td>    
+                                    </tr>  
+                                    <tr>
+                                        <th><strong>Semester saat ini</strong></th>
+                                        <td>{{ $student->academic_information->now_curriculum }}</td>    
+                                    </tr>  
+                                    <tr>
+                                        <th><strong>IPK terakhir</strong></th>
+                                        <td>{{ $student->academic_information->last_ipk }}</td>    
+                                    </tr>  
+                                    <tr>
+                                        <th><strong>Uang Kuliah Tunggal (UKT)</strong></th>
+                                        <td>{{ $student->academic_information->now_ukt }}</td>    
+                                    </tr>  
                                 </tbody>    
                             </table>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="navs-justified-profile" role="tabpanel">
-                    <p>
-                        Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice
-                        cream. Gummies halvah tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream
-                        cheesecake fruitcake.
-                    </p>
-                    <p class="mb-0">
-                        Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu halvah
-                        cotton candy liquorice caramels.
-                    </p>
+                <div class="tab-pane fade" id="navs-keluarga" role="tabpanel">
+                    <div class="d-flex gap-3">
+                        
+                        <img src="{{ asset('images/profile.JPG') }}" width="400px" alt="">
+                        <div class="w-100">
+
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th><strong>Nomor KK</strong></th>
+                                        <td>{{ $student->family_information->number_kk }}</td>    
+                                    </tr> 
+                                    <tr>
+                                        <th><strong>NIK Kepala keluarha</strong></th>
+                                        <td>{{ $student->family_information->nik_headof_family }}</td>    
+                                    </tr> 
+                                    <tr>
+                                        <th><strong>Nama Ayah</strong></th>
+                                        <td>{{ $student->family_information->father_name }}</td>    
+                                    </tr>
+                                    <tr>
+                                        <th><strong>Status Ayah</strong></th>
+                                        <td>{{ $student->family_information->father_living_status }}</td>    
+                                    </tr>  
+                                    <tr>
+                                        <th><strong>Pendidikan Ayah</strong></th>
+                                        <td>{{ $student->family_information->father_last_education }}</td>    
+                                    </tr>  
+                                    <tr>
+                                        <th><strong>Nama Ibu</strong></th>
+                                        <td>{{ $student->family_information->mother_name }}</td>    
+                                    </tr>
+                                    <tr>
+                                        <th><strong>Status Ibu</strong></th>
+                                        <td>{{ $student->family_information->mother_living_status }}</td>    
+                                    </tr>  
+                                    <tr>
+                                        <th><strong>Pendidikan Ibu</strong></th>
+                                        <td>{{ $student->family_information->mother_last_education }}</td>    
+                                    </tr>   
+                                    <tr>
+                                        <th><strong>Jumlah Tanggungan</strong></th>
+                                        <td>{{ $student->family_information->dependents }}</td>    
+                                    </tr>  
+                                    <tr>
+                                        <th><strong>Nomor Telepon Orang tua</strong></th>
+                                        <td>{{ $student->family_information->phone_number }}</td>    
+                                    </tr>  
+                                </tbody>    
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <div class="tab-pane fade" id="navs-justified-messages" role="tabpanel">
-                    <p>
-                        Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies
-                        cupcake gummi bears cake chocolate.
-                    </p>
-                    <p class="mb-0">
-                        Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet
-                        roll icing sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly
-                        jelly-o tart brownie jelly.
-                    </p>
+                <div class="tab-pane fade" id="navs-ekonomi" role="tabpanel">
+                    <div class="d-flex gap-3">
+                        
+                        <img src="{{ asset('images/profile.JPG') }}" width="400px" alt="">
+                        <div class="w-100">
+
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th><strong>Pekerjaan Ayah</strong></th>
+                                        <td>{{ $student->family_information->father_last_education }}</td>    
+                                    </tr>  
+                                    <tr>
+                                        <th><strong>Penghasilan Ayah</strong></th>
+                                        <td>{{ $student->financial_information->father_income }}</td>    
+                                    </tr>     
+                                    <tr>
+                                        <th><strong>Pekerjaan Ibu</strong></th>
+                                        <td>{{ $student->family_information->mother_last_education }}</td>    
+                                    </tr> 
+                                    <tr>
+                                        <th><strong>Penghasilan Ayah</strong></th>
+                                        <td>{{ $student->financial_information->mother_income }}</td>    
+                                    </tr>      
+                            
+                                </tbody>    
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="navs-tambahan" role="tabpanel">
+                    <div class="d-flex gap-3">
+                        
+                        <img src="{{ asset('images/profile.JPG') }}" width="400px" alt="">
+                        <div class="w-100">
+
+                            {{-- <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th><strong>Pekerjaan Ayah</strong></th>
+                                        <td>{{ $student->family_information->father_last_education }}</td>    
+                                    </tr>  
+                                    <tr>
+                                        <th><strong>Penghasilan Ayah</strong></th>
+                                        <td>{{ $student->financial_information->father_income }}</td>    
+                                    </tr>     
+                                    <tr>
+                                        <th><strong>Pekerjaan Ibu</strong></th>
+                                        <td>{{ $student->family_information->mother_last_education }}</td>    
+                                    </tr> 
+                                    <tr>
+                                        <th><strong>Penghasilan Ayah</strong></th>
+                                        <td>{{ $student->financial_information->mother_income }}</td>    
+                                    </tr>      
+                            
+                                </tbody>    
+                            </table> --}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
