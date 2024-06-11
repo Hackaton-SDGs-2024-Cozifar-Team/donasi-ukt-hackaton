@@ -27,6 +27,8 @@ Route::get('/',[MainController::class,'index'])->name('landing-page');
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::get('/management-submission',[SubmissionController::class,'index'])->name('submission.index');
+    Route::get('detail-submission/{id_user}', [SubmissionController::class, 'detailSubmission'])->name('submission.detail');
+    Route::put('/update-status/{id_donation_registration}', [SubmissionController::class, 'updateStatus'])->name('submission.updateStatus');
     Route::get('/management-donatur',[DonaturController::class,'index'])->name('donatur.index');
     Route::get('/time-line',[TimelineController::class,'index'])->name('timeline.index');
     Route::get('/periode',[PeriodController::class,'index'])->name('periode.index');
