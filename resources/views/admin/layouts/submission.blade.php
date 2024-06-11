@@ -24,15 +24,22 @@
                     <tbody>
                         @foreach ($submision_list as $data)
                             <tr>
-                                <td>{{ $data['nim'] }}</td>
-                                <td>{{ $data['fullname'] }}</td>
-                                <td>{{ $data['faculty'] }}</td>
-                                <td>{{ $data['study_program'] }}</td>
+                                <td>{{ $data->student->academic_information->nim }}</td>
+                                <td>{{ $data->student->users->fullname }}</td>
+                                <td>{{ $data->student->academic_information->faculty }}</td>
+                                <td>{{ $data->student->academic_information->study_program }}</td>
                                 <td class="d-flex gap-2">
-                                    <button type="button" class="btn btn-icon btn-outline-secondary" data-bs-toggle="modal"
-                                        data-bs-target="#modalLong{{ $data->id }}">
+                                    <a href="{{ route('submission.detail', ['id_user' => $data->student->id_user]) }}" class="btn btn-icon btn-outline-secondary">
                                         <i class="bx bx-info-circle"></i>
-                                    </button>
+                                    </a>
+                                    <form action="{{ route('submission.updateStatus', ['id_donation_registration' => $data->id_donation_registration]) }}" method="post">
+                                        @csrf
+                                        @method('put')
+                                        <button type="submit" class="btn btn-icon btn-outline-success">
+                                            <i class='bx bx-check'></i>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -41,7 +48,7 @@
         </div>
     </div>
 
-    @foreach ($submision_list as $data)
+    {{-- @foreach ($submision_list as $data)
         <div class="col-lg-4 col-md-3">
             <!-- Modal -->
             <div class="modal fade" id="modalLong{{ $data->id }}" tabindex="-1" aria-hidden="true">
@@ -67,7 +74,7 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @endforeach --}}
 
 
     <script>
