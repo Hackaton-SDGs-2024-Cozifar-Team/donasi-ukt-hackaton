@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('fullname', 30);
-            $table->string('place_birth', 20);
-            $table->date('date_birth');
-            $table->enum('gender', ['male', 'female'])->default('male');
+            $table->string('place_birth', 20)->nullable();
+            $table->date('date_birth')->nullable();
+            $table->enum('gender', ['male', 'female'])->default('male')->nullable();
             $table->string('email', 30)->unique();
             $table->string('password', 60);
-            $table->char('no_telp', 13);
-            $table->enum('role', ['admin', 'recipient', 'donatur'])->default('admin');
+            $table->char('no_telp', 13)->nullable();
+            $table->enum('role', ['admin', 'recipient', 'donatur'])->default('recipient');
             $table->rememberToken();
             $table->timestamps();
         });
