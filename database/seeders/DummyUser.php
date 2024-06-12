@@ -15,6 +15,15 @@ class DummyUser extends Seeder
     {
         $userData = [
             [
+                'fullname' => 'Nico Flassy',
+                'place_birth' => 'Jember',
+                'date_birth' => '2000-01-01',
+                'email' => 'nico@gmail.com',
+                'password' => bcrypt('nico123'),
+                'no_telp' => '085689543421',
+                'role' => 'admin'
+            ],
+            [
                 'fullname' => 'Bayu',
                 'place_birth' => 'Jember',
                 'date_birth' => '2000-01-01',

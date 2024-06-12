@@ -51,7 +51,7 @@
                     bantuan biaya kuliah. Dengan berdonasi, Anda tidak hanya membantu mereka menyelesaikan pendidikan
                     tinggi tetapi juga berkontribusi dalam mencapai Sustainable Development Goals (SDGs), khususnya
                     dalam upaya ketidaksetaraan (SDG 10).</h4>
-                <a href="#" class="button-blue mt-4"><span>Donasi Sekarang</span"></a>
+                <a href="/form-register" class="button-blue mt-4"><span>Donasi Sekarang</span"></a>
             </div>
             <div class="w-1/2">
                 <img src="../img/landing-page/about-img.png" alt="">
