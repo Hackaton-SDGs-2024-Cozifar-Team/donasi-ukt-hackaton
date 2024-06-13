@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class DetailDonation extends Model
 {
     use HasFactory;
-    
+    protected $guarded = ['id_detail_donation'];
 }
