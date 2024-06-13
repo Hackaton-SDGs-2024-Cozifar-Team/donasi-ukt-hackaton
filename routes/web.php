@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\TimelineController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Mahasiswa\DashboardMahasiswaController;
 use App\Http\Controllers\MainController;
@@ -33,6 +34,8 @@ Route::post('/authenticate',[LoginController::class,'authenticate']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/form-register',[RegisterFormController::class,'index']);
+    Route::get('/form-donasi',[DonationController::class,'index']);
+    Route::post('/add-recipient',[RegisterFormController::class,'addRecipient']);
 
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
@@ -50,4 +53,3 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard',[DashboardMahasiswaController::class,'index'])->name('mahasiswa.index');
     });
 });
-
