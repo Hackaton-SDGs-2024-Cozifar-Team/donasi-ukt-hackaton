@@ -1,8 +1,10 @@
 <div id="informasi-pribadi"
-    class="w-full h-[80dvh] bg-white shadow-lg border flex flex-col justify-center items-center">
-    <h1 class="font-bold text-[22px] text-black">Form Pendaftaran Penerima Donasi UKT Kampus 2024</h1>
-    <p class="text-gray-500">Informasi Pribadi</p>
-    <form action="/add-recipient" class="w-full" method="post">
+    class="w-full h-[80dvh] py-[40px] bg-white shadow-lg border flex flex-col justify-center items-center">
+    <div class="w-full flex flex-col items-center gap-3 ">
+        <h1 class="font-bold text-[22px] text-black">Form Pendaftaran Penerima Donasi UKT Kampus 2024</h1>
+        <p class="text-gray-500">Informasi Pribadi</p>
+    </div>
+    <form action="/add-recipient" class="w-full h-full flex flex-col justify-start" method="post">
         @csrf
         <div class="pt-8 w-full flex flex-col gap-2 text-greyText">
             <div class="row flex px-[100px] gap-10">
@@ -100,10 +102,9 @@
                 </span>
             </div>
         </div>
-        <div class="flex w-full px-[40px] justify-between">
-            <button class="bg-blue text-white px-10 py-2 rounded-md">Kembali</button>
-            <button type="submit" class="bg-blue text-white px-10 py-2 rounded-md">Simpan</button>
-            <button class="bg-blue text-white px-10 py-2 rounded-md">Lanjut</button>
+        <div class="flex w-full px-[40px] justify-between mt-auto">
+            <button class="btn-back bg-blue text-white px-10 py-2 rounded-md">Kembali</button>
+            <button class="btn-next bg-blue text-white px-10 py-2 rounded-md">Lanjut</button>
         </div>
     </form>
 </div>

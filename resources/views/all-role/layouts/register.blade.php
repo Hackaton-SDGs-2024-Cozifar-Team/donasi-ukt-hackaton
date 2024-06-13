@@ -44,18 +44,55 @@
         </nav>
         <div>
             @include('all-role.pages.form-register.informasi-pribadi')
+            @include('all-role.pages.form-register.informasi-akademik')
+            @include('all-role.pages.form-register.informasi-keuangan')
+            @include('all-role.pages.form-register.informasi-tambahan')
         </div>
     </section>
 
     @yield('register')
-    {{-- <script>
+    <script>
         $(document).ready(function(){
-            alert('Hello World!');
-            // $('#scroll-button').click(function(){
+            let pages = 1;
+            $('#informasi-akademik').hide();
+            $('#informasi-keuangan').hide();
+            $('#informasi-tambahan').hide();
 
-            // });
+            $('.btn-next').click(function(event){
+                event.preventDefault();
+                if (pages == 1) {
+                    $('#informasi-pribadi').hide();
+                    $('#informasi-akademik').show();
+                } else if (pages == 2) {
+                    $('#informasi-akademik').hide();
+                    $('#informasi-keuangan').show();
+                } else if (pages == 3) {
+                    $('#informasi-keuangan').hide();
+                    $('#informasi-tambahan').show();
+                }
+                if (pages < 4) { // Prevent incrementing beyond the last page
+                    pages += 1;
+                }
+            });
+
+            $('.btn-back').click(function(event){
+                event.preventDefault();
+                if (pages == 4) {
+                    $('#informasi-tambahan').hide();
+                    $('#informasi-keuangan').show();
+                } else if (pages == 3) {
+                    $('#informasi-keuangan').hide();
+                    $('#informasi-akademik').show();
+                } else if (pages == 2) {
+                    $('#informasi-akademik').hide();
+                    $('#informasi-pribadi').show();
+                }
+                if (pages > 1) { // Prevent decrementing below the first page
+                    pages -= 1;
+                }
+            });
         });
-    </script> --}}
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
