@@ -31,7 +31,7 @@ Route::post('/add-register',[LoginController::class,'addRegister']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/authenticate',[LoginController::class,'authenticate']);
 
-// Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/form-register',[RegisterFormController::class,'index']);
 
     Route::prefix('admin')->group(function () {
@@ -49,5 +49,5 @@ Route::post('/authenticate',[LoginController::class,'authenticate']);
     Route::prefix('mahasiswa')->group(function () {
         Route::get('/dashboard',[DashboardMahasiswaController::class,'index'])->name('mahasiswa.index');
     });
-// });
+});
 

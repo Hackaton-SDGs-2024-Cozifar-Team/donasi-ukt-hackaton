@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('donations', function (Blueprint $table) {
-            $table->string('id_donation')->primary();
+            $table->bigIncrements('id_donation');
             $table->unsignedBigInteger('id_user');
 
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
