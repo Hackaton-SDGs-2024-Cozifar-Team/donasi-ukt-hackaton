@@ -13,6 +13,8 @@ export default {
             blueLight : '#F5F5F5',
             black : '#343434',
             purple : '#4F129D',
+            grey : '#F1F1F3',
+            greyText : '#616161',
         }
     },
   },
