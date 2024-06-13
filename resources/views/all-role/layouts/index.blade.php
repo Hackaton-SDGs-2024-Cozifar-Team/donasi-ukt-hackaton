@@ -32,7 +32,7 @@
             khususnya dalam mengurangi kemiskinan dan ketidaksetaraan. Bersama, kita dapat memberikan kesempatan
             pendidikan yang merata, memberdayakan generasi muda, dan menciptakan masa depan yang lebih adil dan
             berkelanjutan.</h4>
-        <a href="#" class="button-blue mt-4"><span>Daftar Sekarang</span></a>
+        <a href="/form-register" class="button-blue mt-4"><span>Daftar Sekarang</span></a>
         <button id="scroll-button"
             class="w-[70px] h-[70px] bg-blue absolute bottom-12 rounded-full flex items-center justify-center shadow-md">
             <i class="ri-arrow-down-s-line text-[40px]"></i>
@@ -51,7 +51,7 @@
                     bantuan biaya kuliah. Dengan berdonasi, Anda tidak hanya membantu mereka menyelesaikan pendidikan
                     tinggi tetapi juga berkontribusi dalam mencapai Sustainable Development Goals (SDGs), khususnya
                     dalam upaya ketidaksetaraan (SDG 10).</h4>
-                <a href="#" class="button-blue mt-4"><span>Donasi Sekarang</span"></a>
+                <a href="/form-donasi" class="button-blue mt-4"><span>Donasi Sekarang</span"></a>
             </div>
             <div class="w-1/2">
                 <img src="../img/landing-page/about-img.png" alt="">

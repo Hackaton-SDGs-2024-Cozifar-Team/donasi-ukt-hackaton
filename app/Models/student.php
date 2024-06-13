@@ -10,6 +10,10 @@ class student extends Model
 {
     use HasFactory;
 
+    public function users() : HasOne
+    {
+        return $this->hasOne(User::class, "id", "id_user");
+    }
     public function additional_information() : HasOne
     {
         return $this->hasOne(AdditionalInformation::class,"id_additional_information","id_additional_information");
@@ -25,7 +29,7 @@ class student extends Model
         return $this->hasOne(FamilyInformation::class,"id_family_information","id_family_information");
     }
 
-    public function financial_information() : HasOne 
+    public function financial_information() : HasOne
     {
         return $this->hasOne(FinancialInformation::class,"id_financial_information","id_financial_information");
     }
