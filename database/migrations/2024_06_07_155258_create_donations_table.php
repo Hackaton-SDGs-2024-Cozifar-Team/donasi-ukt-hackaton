@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('donations', function (Blueprint $table) {
-            $table->bigIncrements('id_donation');
+            $table->string('id_donation')->primary();
             $table->unsignedBigInteger('id_user');
+            $table->enum('status', ['paid', 'unpaid'])->default('paid');
 
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
