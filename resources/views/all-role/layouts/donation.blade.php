@@ -9,6 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     @vite('resources/css/app.css')
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> --}}
+        <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
+        <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="{{ config('midtrans.client_key') }}"></script>
 </head>
 
 <body>
@@ -46,7 +50,7 @@
             class="w-full py-[100px] bg-white shadow-lg border flex flex-col justify-center items-center">
             <h1 class="font-bold text-[22px] text-black">Form Donasi UKT</h1>
             <p class="text-gray-500">Informasi Donatur</p>
-            <form action="/add-recipient" class="w-full" method="post">
+            {{-- <form class="w-full" method="post"> --}}
                 @csrf
                 <div class="pt-8 w-full flex flex-col gap-2 text-greyText">
                     <div class="row flex px-[100px] gap-10">
@@ -54,14 +58,14 @@
                             <label for="name" class="font-[600] text-[16px]">Nama Lengkap</label>
                             <input disabled type="text" name="name" id="name"
                                 class="bg-grey border-none px-5 py-3 rounded-md"
-                                placeholder="Masukan nama lengkap Anda!" value="{{ Auth::user()->fullname}}">
+                                placeholder="Masukan nama lengkap Anda!" value="{{ Auth::user()->fullname }}">
                             @error('name')
                             <p class="text-red">{{ $message }}</p>
                             @enderror
                         </span>
                         <span class="flex flex-1 flex-col gap-2 mb-5">
                             <label for="no_telp" class="font-[600] text-[16px]">Nomor Telepon</label>
-                            <input type="text" name="no_telp" id="place_birth"
+                            <input type="text" name="no_telp" id="no_telp"
                                 class="bg-grey border-none px-5 py-3 rounded-md"
                                 placeholder="Masukan nomor telepon Anda!">
                             @error('no_telp')
@@ -70,7 +74,7 @@
                         </span>
                         <span class="flex flex-1 flex-col gap-2 mb-5">
                             <label for="address" class="font-[600] text-[16px]">Alamat</label>
-                            <input type="text" name="address" id="date_birth"
+                            <input type="text" name="address" id="address"
                                 class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan alamat Anda!">
                             @error('address')
                             <p class="text-red">{{ $message }}</p>
@@ -90,12 +94,12 @@
                     </div>
                 </div>
                 <div class="flex w-full px-[40px] pt-[100px] justify-center">
-                    <button class="bg-blue text-white px-10 py-2 rounded-md">Donasi Sekarang</button>
+                    <button class="bg-blue text-white px-10 py-2 rounded-md" id="bayar">Donasi Sekarang</button>
                 </div>
-            </form>
+            {{-- </form> --}}
         </div>
     </section>
-
+    <div id="snap-container"></div>
     @yield('register')
     {{-- <script>
         $(document).ready(function(){
@@ -105,8 +109,65 @@
             // });
         });
     </script> --}}
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#bayar').click(function() {
+    
+                // Buat array kosong untuk menyimpan nilai-nilai
+                var price = $("#nominal_donation").val();
+                var no_telp = $("#no_telp").val();
+                var address = $("#address").val();
+                // alert(price)
+                var id = {{ Auth::user()->id }};
+    
+                const data = {
+                    price: price,
+                    user_id: id,
+                    no_telp: no_telp,
+                    address: address
+                }
+                var token = "";
+                $.ajax({
+                    url: "/api/getToken",
+                    method: "post",
+                    data: data,
+                    success(res) {
+                        console.log(res.token)
+                        token = res.token;
+                        window.snap.pay(token, {
+                            onSuccess: function(result) {
+                                /* You may add your own implementation here */
+                                // window.location.assign("http://127.0.0.1:8000/success-payment")
+                            },
+                            onPending: function(result) {
+                                /* You may add your own implementation here */
+                                alert("wating your payment!");
+                                console.log(result);
+                            },
+                            onError: function(result) {
+                                /* You may add your own implementation here */
+                                alert("payment failed!");
+                                console.log(result);
+                            },
+                            onClose: function() {
+                                /* You may add your own implementation here */
+                                alert(
+                                    'you closed the popup without finishing the payment'
+                                    );
+                            }
+                        })
+                    },
+                    error(err) {
+                        console.log(err)
+                    }
+                })
+    
+            })
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
+
+
 
 </html>

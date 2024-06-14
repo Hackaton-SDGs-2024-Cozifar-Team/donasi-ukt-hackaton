@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Donation extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['id_donation','id_user','status'];
     protected $primaryKey = 'id_donation';
 
     public function user() : BelongsTo

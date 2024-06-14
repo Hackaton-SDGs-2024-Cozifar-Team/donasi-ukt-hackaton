@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class DetailDonation extends Model
 {
     use HasFactory;
+    protected $guarded = ['id_detail_donation'];
     protected $primaryKey = 'id_detail_donation';
 
     public function donation() : BelongsTo
