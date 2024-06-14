@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
         Route::put('/update-status/{id_donation_registration}', [SubmissionController::class, 'updateStatus'])->name('submission.updateStatus');
         Route::get('/management-donatur',[DonaturController::class,'index'])->name('donatur.index');
         Route::get('/periode',[PeriodController::class,'index'])->name('periode.index');
+        Route::get('/add-periode', [PeriodController::class, 'create'])->name('periode.create');
+        Route::post('periode', [PeriodController::class, 'store'])->name('periode.store');
         Route::get('/user',[UserController::class,'index'])->name('user.index');
         Route::get('/report',[ReportController::class,'index'])->name('report.index');
 
