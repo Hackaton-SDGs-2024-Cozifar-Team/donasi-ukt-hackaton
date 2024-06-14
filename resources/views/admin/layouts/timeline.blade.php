@@ -14,7 +14,7 @@
                   <div class="card " >
                     <div class="table-responsive text-nowrap p-3">
                     <div class="d-inline-block mb-3">
-                    <a href="/admin/exam/create"  class="btn btn-primary d-flex align-items-center">Tambah</a>
+                    <a href="{{ route('timeline.create') }}"  class="btn btn-primary d-flex align-items-center">Tambah</a>
                     </div>
                       <table id="myTable" class="table table-hover">
                         <thead>
