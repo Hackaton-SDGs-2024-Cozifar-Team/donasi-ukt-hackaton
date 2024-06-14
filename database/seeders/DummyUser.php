@@ -32,6 +32,15 @@ class DummyUser extends Seeder
                 'no_telp' => '085689543421',
                 'role' => 'recipient'
             ],
+            [
+                'fullname' => 'Udin',
+                'place_birth' => 'Kediri',
+                'date_birth' => '2000-01-01',
+                'email' => 'udin@example.com',
+                'password' => bcrypt('12345678'),
+                'no_telp' => '085676567898',
+                'role' => 'donatur'
+            ],
         ];
 
         foreach ($userData as $key => $val) {

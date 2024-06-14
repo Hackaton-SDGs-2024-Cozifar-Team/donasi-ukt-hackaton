@@ -21,13 +21,7 @@ class SubmissionController extends Controller
 
     public function detailSubmission($id_user)
     {
-        $submission = Student::with([
-            'users',
-            'academic_information',
-            'family_information',
-            'financial_information',
-            'additional_information'
-        ])->where('id_user', $id_user)->firstOrFail();
+        $submission = Student::all()->where('id_user', $id_user)->firstOrFail();
 
         return view("admin.layouts.detail_submissions", [
             "title" => "Detail Pengajuan",
