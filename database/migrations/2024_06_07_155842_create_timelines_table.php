@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('timelines', function (Blueprint $table) {
             $table->bigIncrements('id_timeline');
-            $table->integer('order');
+            $table->integer('stages');
             $table->string('title_timeline', 50);
-            $table->string('deadline', 30);
+            $table->date('start');
+            $table->date('deadline');
             $table->text('description');
-            $table->bigIncrements('id_periode');
+            $table->unsignedBigInteger('id_periode');
             $table->timestamps();
 
             $table->foreign('id_periode')->references('id_periode')->on('periodes')->onDelete('cascade')->onUpdate('cascade');

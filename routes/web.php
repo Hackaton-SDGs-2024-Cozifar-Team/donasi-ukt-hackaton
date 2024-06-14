@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
         Route::prefix('time-line')->group(function () {
             Route::get('/',[TimelineController::class,'index'])->name('timeline.index');
             Route::get('/create',[TimelineController::class,'create'])->name('timeline.create');
+            Route::post('/store',[TimelineController::class,'store'])->name('timeline.store');
         });
     });
 
