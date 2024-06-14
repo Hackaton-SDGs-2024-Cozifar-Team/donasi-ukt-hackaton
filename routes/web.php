@@ -43,10 +43,14 @@ Route::middleware('auth')->group(function () {
         Route::get('detail-submission/{id_user}', [SubmissionController::class, 'detailSubmission'])->name('submission.detail');
         Route::put('/update-status/{id_donation_registration}', [SubmissionController::class, 'updateStatus'])->name('submission.updateStatus');
         Route::get('/management-donatur',[DonaturController::class,'index'])->name('donatur.index');
-        Route::get('/time-line',[TimelineController::class,'index'])->name('timeline.index');
         Route::get('/periode',[PeriodController::class,'index'])->name('periode.index');
         Route::get('/user',[UserController::class,'index'])->name('user.index');
         Route::get('/report',[ReportController::class,'index'])->name('report.index');
+
+        Route::prefix('time-line')->group(function () {
+            Route::get('/',[TimelineController::class,'index'])->name('timeline.index');
+            Route::get('/create',[TimelineController::class,'create'])->name('timeline.create');
+        });
     });
 
     Route::prefix('mahasiswa')->group(function () {

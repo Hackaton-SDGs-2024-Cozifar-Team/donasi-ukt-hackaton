@@ -13,4 +13,11 @@ class TimelineController extends Controller
             "title"=> "Time Line",
         ]);
     }
+
+    public function create()
+    {
+        return view("admin.layouts.add-timeline",[
+            "title"=> "Time Line",
+        ]);
+    }
 }
