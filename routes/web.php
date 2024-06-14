@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/management-donatur',[DonaturController::class,'index'])->name('donatur.index');
         Route::get('/time-line',[TimelineController::class,'index'])->name('timeline.index');
         Route::get('/periode',[PeriodController::class,'index'])->name('periode.index');
+        Route::get('/add-periode', [PeriodController::class, 'create'])->name('periode.create');
+        Route::post('periode', [PeriodController::class, 'store'])->name('periode.store');
         Route::get('/user',[UserController::class,'index'])->name('user.index');
         Route::get('/report',[ReportController::class,'index'])->name('report.index');
     });
