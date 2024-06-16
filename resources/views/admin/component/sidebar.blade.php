@@ -1,9 +1,10 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo mb-2">
         <a href="index.html" class="app-brand-link">
-            <span class="app-brand-logo demo">
+            <span  style="background-image: #111" class="app-brand-logo demo">
+              <img src="{{ asset('/images/logoukt.png') }}" width="30px" alt="">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">BUMN Muda</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">Donasi UKT</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -29,7 +30,7 @@
         </li>
         <li class="menu-item @active('recipient.*')">
             <a href="{{ route('recipient.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons fa-solid fa-cubes"></i>
+                <i class="menu-icon tf-icon fa-solid fa-list-check"></i>
                 <div data-i18n="Analytics">Manajemen Penerima</div>
             </a>
         </li>
@@ -47,7 +48,7 @@
         </li>
         <li class="menu-item @active('periode.*')">
             <a href="{{ route('periode.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons fa-solid fa-list"></i>
+                <i class="menu-icon tf-icons fa-regular fa-calendar-plus"></i>
                 <div data-i18n="Analytics">Periode</div>
             </a>
         </li>
@@ -65,11 +66,11 @@
         </a>
       </li>
 
-        <li class="menu-item @active('mahasiswa.index')">
+        {{-- <li class="menu-item @active('mahasiswa.index')">
             <a href="{{ route('mahasiswa.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard Mahasiswa</div>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </aside>
