@@ -53,6 +53,14 @@
                                         <td>Adza Zarif Nur Iskandar</td>    
                                     </tr>
                                     <tr>
+                                        <th><strong>Tempat tanggal lahit</strong></th>
+                                        <td>Blitar,  14 Februari 2003</td>    
+                                    </tr>
+                                    <tr>
+                                        <th><strong>Alamat</strong></th>
+                                        <td>Sumberaden rt 01 / rw 06 Mronjo Selopuro Blitar</td>    
+                                    </tr>
+                                    <tr>
                                         <th><strong>Program Studi</strong></th>
                                         <td>{{ $student->academic_information->study_program }}</td>    
                                     </tr>  
