@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('study_program', 30);
             $table->string('nim', 10);
             $table->string('study_year', 10);
-            $table->integer('now_curriculum');
-            $table->decimal('last_ipk', 3, 2);
+            $table->integer('now_semester');
+            $table->decimal('last_gpa', 3, 2);
             $table->integer('now_ukt');
             $table->timestamps();
         });

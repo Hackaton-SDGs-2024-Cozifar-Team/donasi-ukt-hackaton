@@ -43,10 +43,13 @@
             </ol>
         </nav>
         <div>
-            @include('all-role.pages.form-register.informasi-pribadi')
-            @include('all-role.pages.form-register.informasi-akademik')
-            @include('all-role.pages.form-register.informasi-keuangan')
-            @include('all-role.pages.form-register.informasi-tambahan')
+            <form id="form-recipient" action="/add-recipient" method="post" enctype="multipart/form-data">
+                @csrf
+                @include('all-role.pages.form-register.informasi-pribadi')
+                @include('all-role.pages.form-register.informasi-akademik')
+                @include('all-role.pages.form-register.informasi-keuangan')
+                @include('all-role.pages.form-register.informasi-tambahan')
+            </form>
         </div>
     </section>
 
@@ -70,8 +73,12 @@
                     $('#informasi-keuangan').hide();
                     $('#informasi-tambahan').show();
                 }
-                if (pages < 4) { // Prevent incrementing beyond the last page
+                if (pages < 4) {
+
                     pages += 1;
+                }else{
+                      $('#form-recipient').submit()
+                    // alert("akhir")
                 }
             });
 
