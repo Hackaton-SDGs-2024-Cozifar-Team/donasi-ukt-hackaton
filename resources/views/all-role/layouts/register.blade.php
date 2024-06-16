@@ -47,6 +47,7 @@
                 @csrf
                 @include('all-role.pages.form-register.informasi-pribadi')
                 @include('all-role.pages.form-register.informasi-akademik')
+                @include('all-role.pages.form-register.informasi-keluarga')
                 @include('all-role.pages.form-register.informasi-keuangan')
                 @include('all-role.pages.form-register.informasi-tambahan')
             </form>
@@ -58,6 +59,7 @@
         $(document).ready(function(){
             let pages = 1;
             $('#informasi-akademik').hide();
+            $('#informasi-keluarga').hide();
             $('#informasi-keuangan').hide();
             $('#informasi-tambahan').hide();
 
@@ -68,17 +70,19 @@
                     $('#informasi-akademik').show();
                 } else if (pages == 2) {
                     $('#informasi-akademik').hide();
-                    $('#informasi-keuangan').show();
+                    $('#informasi-keluarga').show();
                 } else if (pages == 3) {
+                    $('#informasi-keluarga').hide();
+                    $('#informasi-keuangan').show();
+                } else if(pages == 4){
                     $('#informasi-keuangan').hide();
                     $('#informasi-tambahan').show();
                 }
-                if (pages < 4) {
 
+                if (pages < 5) {
                     pages += 1;
-                }else{
-                      $('#form-recipient').submit()
-                    // alert("akhir")
+                } else {
+                    $('#form-recipient').submit();
                 }
             });
 
@@ -89,16 +93,21 @@
                     $('#informasi-keuangan').show();
                 } else if (pages == 3) {
                     $('#informasi-keuangan').hide();
-                    $('#informasi-akademik').show();
+                    $('#informasi-keluarga').show();
                 } else if (pages == 2) {
+                    $('#informasi-keluarga').hide();
+                    $('#informasi-akademik').show();
+                } else if (pages == 1) {
                     $('#informasi-akademik').hide();
                     $('#informasi-pribadi').show();
                 }
-                if (pages > 1) { // Prevent decrementing below the first page
+
+                if (pages > 1) {
                     pages -= 1;
                 }
             });
         });
+
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>

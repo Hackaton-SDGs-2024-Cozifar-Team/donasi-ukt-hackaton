@@ -34,7 +34,7 @@
         <div class="row flex px-[100px] gap-10">
             <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="nim" class="font-[600] text-[16px]">Nomor Induk Mahasiswa (NIM)</label>
-                <input type="number" name="nim" id="nim" class="bg-grey border-none px-5 py-3 rounded-md"
+                <input type="text" name="nim" id="nim" class="bg-grey border-none px-5 py-3 rounded-md"
                     placeholder="Masukan NIM Anda!">
                 @error('email')
                 <p class="text-red">{{ $message }}</p>

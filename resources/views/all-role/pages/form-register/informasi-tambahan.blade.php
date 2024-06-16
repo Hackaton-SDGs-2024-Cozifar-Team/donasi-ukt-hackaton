@@ -33,8 +33,8 @@
         </div>
         <div class="row flex px-[100px] gap-10">
             <span class="flex flex-1 flex-col gap-2 mb-5">
-                <label for="date_birth" class="font-[600] text-[16px]">Surat Keterangan Tidak Mampu</label>
-                <input type="file" name="date_birth" id="date_birth" class="bg-grey border-none px-5 py-3 rounded-md"
+                <label for="sktm" class="font-[600] text-[16px]">Surat Keterangan Tidak Mampu</label>
+                <input type="file" name="sktm" id="sktm" class="bg-grey border-none px-5 py-3 rounded-md"
                     placeholder="Masukan SKTM">
                 @error('email')
                 <p class="text-red">{{ $message }}</p>

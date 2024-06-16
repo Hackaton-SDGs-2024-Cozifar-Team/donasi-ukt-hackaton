@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AcademicInformation;
 use App\Models\AdditionalInformation;
+use App\Models\FamilyInformation;
 use App\Models\FinancialInformation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -36,6 +37,19 @@ class RegisterFormController extends Controller
             'now_semester' => $request->now_semester,
             'last_gpa' => $request->last_gpa,
             'now_ukt' => $request->now_ukt,
+        ]);
+
+        FamilyInformation::create([
+            'father_name' => $request->father_name,
+            'father_living_status' => $request->father_living_status,
+            'father_last_education' => $request->father_last_education,
+            'father_occupation' => $request->father_occupation,
+            'mother_name' => $request->mother_name,
+            'mother_living_status' => $request->mother_living_status,
+            'mother_last_education' => $request->mother_last_education,
+            'mother_occupation' => $request->mother_occupation,
+            'dependents' => $request->dependents,
+            'phone_number' => $request->phone_number,
         ]);
 
         FinancialInformation::create([
