@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('payment_methode', 20);
             $table->timestamps();
 
-            $table->foreign('id_donation')->references('id_donation')->on('donations')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_donation')->references('id_donation')->on('donations');
             $table->foreign('id_periode')->references('id_periode')->on('periodes')->onDelete('cascade')->onUpdate('cascade');
         });
     }

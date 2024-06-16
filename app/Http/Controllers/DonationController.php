@@ -69,4 +69,46 @@ class DonationController extends Controller
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         return response()->json(['token'=> $snapToken]);
     }
+
+    // public function callback(Request $request)
+    // {
+    //     $serverKey = config('midtrans.server_key');
+    //     $hashed = hash("sha512", $request->order_id.$request->status_code.$request->gross_amount.$serverKey);
+    //     if($hashed == $request->signature_key){
+    //         if($request->transaction_status == "settlement" || $request->transaction_status == "capture"){
+    
+    //             $order = Order::where("id", $request->order_id)->first();
+    //             $user = User::find($order->user_id);
+    //             $orderDetail = OrderDetail::where("order_id", $request->order_id)->get();
+
+    //             $name_package = [];
+
+    //             $result_discount = 0;
+    //             $sub_total = 0;
+    //             foreach($orderDetail as $detail){
+    //                 $package = Package::find($detail->package_id);
+    //                 array_push( $name_package, [
+    //                     "name_packag"=> $package->name,
+    //                     "price"=> $package->price,
+    //                     "discount"=> $package->discount,
+    //                 ]);
+
+    //                 $sub_total += $package->price;
+    //                 $result_discount += $package->discount;
+    //             }
+
+    //                  //update status
+                     
+    //                  $order->status = "paid";
+    //                  $order->save();
+
+    //              Transaction::create([
+    //                  "order_id"=> $request->order_id,
+    //                  "gross_amount"=> $request->gross_amount,
+    //                  "date"=> $request->transaction_time,
+    //                  "payment_type"=> $request->payment_type,
+    //              ]);
+    //         }
+    //     }
+    // }
 }
