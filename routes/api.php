@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DonaturController;
 use App\Http\Controllers\DonationController;
 use Illuminate\Http\Request;
@@ -22,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/getToken', [DonationController::class,'getToken']);
+
+Route::get('/data-grafik', [DashboardController::class,'dataGrafik']);
