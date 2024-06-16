@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DonaturController;
 use App\Http\Controllers\Admin\PeriodController;
+use App\Http\Controllers\Admin\RecipientController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\TimelineController;
@@ -42,6 +43,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/management-submission',[SubmissionController::class,'index'])->name('submission.index');
         Route::get('detail-submission/{id_user}', [SubmissionController::class, 'detailSubmission'])->name('submission.detail');
         Route::put('/update-status/{id_donation_registration}', [SubmissionController::class, 'updateStatus'])->name('submission.updateStatus');
+        Route::get('/recipient', [RecipientController::class,'index'])->name('recipient.index');
         Route::get('/management-donatur',[DonaturController::class,'index'])->name('donatur.index');
         Route::get('/periode',[PeriodController::class,'index'])->name('periode.index');
         Route::get('/add-periode', [PeriodController::class, 'create'])->name('periode.create');

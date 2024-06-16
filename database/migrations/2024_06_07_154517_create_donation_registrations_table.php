@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id_donation_registration');
             $table->unsignedBigInteger('student_id');
             $table->string('status', 20);
+            $table->bigInteger('nominal_accepted')->nullable();
             $table->unsignedBigInteger('id_periode');
 
             $table->foreign('student_id')->references('id_student')->on('students')->onDelete('cascade')->onUpdate('cascade');

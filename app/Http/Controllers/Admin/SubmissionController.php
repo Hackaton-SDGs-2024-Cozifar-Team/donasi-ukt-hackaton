@@ -11,7 +11,7 @@ class SubmissionController extends Controller
 {
     public function index()
     {
-        $submision_list = DonationRegistration::all();
+        $submision_list = DonationRegistration::all()->where('status', 'Pengajuan');
 
         return view("admin.layouts.submission", [
             "title" => "Pengajuan",
@@ -34,5 +34,6 @@ class SubmissionController extends Controller
         $submission = DonationRegistration::where('id_donation_registration', $id)->firstOrFail();
         $submission->status = "Diterima";
         $submission->save();
+        return redirect()->route('submission.index');
     }
 }
