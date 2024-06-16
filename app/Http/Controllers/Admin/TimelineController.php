@@ -11,8 +11,10 @@ class TimelineController extends Controller
 {
     public function index()
     {
+        $timeline =timeline::all();
         return view("admin.layouts.timeline",[
             "title"=> "Time Line",
+            "timelines"=> $timeline
         ]);
     }
 
