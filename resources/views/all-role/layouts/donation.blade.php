@@ -8,7 +8,7 @@
     <title>Form Register | Donasi UKT</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     @vite('resources/css/app.css')
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> --}}
     <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
@@ -109,67 +109,70 @@
     </script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
-                    $('#bayar').click(function() {
+            $('#bayar').click(function() {
+                // Buat array kosong untuk menyimpan nilai-nilai
+                var price = $("#nominal_donation").val();
+                var no_telp = $("#no_telp").val();
+                var address = $("#address").val();
+                // alert(price)
+                var id = {{ Auth::user()->id }};
 
-                                // Buat array kosong untuk menyimpan nilai-nilai
-                                var price = $("#nominal_donation").val();
-                                var no_telp = $("#no_telp").val();
-                                var address = $("#address").val();
-                                // alert(price)
-                                var id = {{ Auth::user()->id }};
-
-                                const data = {
-                                    price: price,
-                                    user_id: id,
-                                    no_telp: no_telp,
-                                    address: address
-                                }
-                                var token = "";
+                const data = {
+                    price: price,
+                    user_id: id,
+                    no_telp: no_telp,
+                    address: address
+                }
+                var token = "";
+                $.ajax({
+                    url: "/api/getToken",
+                    method: "post",
+                    data: data,
+                    success(res) {
+                        console.log(res)
+                        token = res.token;
+                        window.snap.pay(token, {
+                            onSuccess: function(result) {
+                                /* You may add your own implementation here */
                                 $.ajax({
-                                        url: "/api/getToken",
-                                        method: "post",
-                                        data: data,
-                                        success(res) {
-                                            console.log(res.token)
-                                            token = res.token;
-                                            window.snap.pay(token, {
-                                                onSuccess: function(result) {
-                                                    /* You may add your own implementation here */
-                                                    $.ajax({
-                                                        url: "/api/callback",
-                                                        method: "post",
-                                                        data: result,
-                                                        success(res) {
-                                                            console.log(res);
-                                                        },
-                                                        error(err){
-                                                            console.log(err);
-                                                        }
-                                                        onPending: function(result) {
-                                                            /* You may add your own implementation here */
-                                                            alert("wating your payment!");
-                                                            console.log(result);
-                                                        },
-                                                        onError: function(result) {
-                                                            /* You may add your own implementation here */
-                                                            alert("payment failed!");
-                                                            console.log(result);
-                                                        },
-                                                        onClose: function() {
-                                                            /* You may add your own implementation here */
-                                                            alert(
-                                                                'you closed the popup without finishing the payment'
-                                                            );
-                                                        }
-                                                    })
-                                                },
-                                                error(err) {
-                                                    console.log(err)
-                                                }
-                                            })
+                                    url: "/api/callback",
+                                    method: "post",
+                                    data: result,
+                                    success(res) {
+                                        console.log(res);
+                                        window.location.assign("http://127.0.0.1:8000/")
+                                    },
+                                    error(err) {
+                                        console.log(err);
+                                    }
+                                })
+                            },
 
-                                        })
-                                });
+                            onPending: function(result) {
+                                /* You may add your own implementation here */
+                                alert("wating your payment!");
+                                console.log(result);
+                            },
+                            onError: function(result) {
+                                /* You may add your own implementation here */
+                                alert("payment failed!");
+                                console.log(result);
+                            },
+                            onClose: function() {
+                                /* You may add your own implementation here */
+                                alert(
+                                    'you closed the popup without finishing the payment'
+                                );
+                            }
+                        })
+                    },
+                    error(err) {
+                        console.log(err)
+                    }
+                })
+
+            })
+        });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>

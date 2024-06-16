@@ -70,5 +70,12 @@ class DonationController extends Controller
         return response()->json(['token'=> $snapToken]);
     }
 
+    public function callback(Request $request){
+       
+                $donation = Donation::where("id_donation",$request->order_id)->firstOrFail();
+                $donation->status = 'paid';
+                $donation->save();
 
+                return response()->json(["message"=> "data berhasil ditambahkan"]);
+    }
 }
