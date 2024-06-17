@@ -15,23 +15,20 @@ class RecipientController extends Controller
         $recipients = DonationRegistration::where('status', 'Diterima')->get();
         $recipientCount = $recipients->count();
 
-        // Jika tidak ada penerima, nominal diterima default adalah 0
         $nominalAcceptedDefault = $recipientCount > 0 ? $totalDonation / $recipientCount : 0;
 
-        // Pembagian awal
         $totalAccepted = 0;
         foreach ($recipients as $recipient) {
             $nowUkt = $recipient->student->academic_information->now_ukt;
-            $recipient->nominalAccepted = min($nominalAcceptedDefault, $nowUkt);
-            $totalAccepted += $recipient->nominalAccepted;
+            $recipient->nominal_accepted = min($nominalAcceptedDefault, $nowUkt);
+            $totalAccepted += $recipient->nominal_accepted;
+            $recipient->save();
         }
 
-        // Hitung sisa donasi yang belum didistribusikan
         $remainingDonation = $totalDonation - $totalAccepted;
 
-        // Filter mahasiswa yang masih kurang donasi
         $recipientsNeedingMore = $recipients->filter(function ($recipient) {
-            return $recipient->nominalAccepted < $recipient->student->academic_information->now_ukt;
+            return $recipient->nominal_accepted < $recipient->student->academic_information->now_ukt;
         });
 
         $recipientsNeedingMoreCount = $recipientsNeedingMore->count();
@@ -41,11 +38,12 @@ class RecipientController extends Controller
 
             foreach ($recipientsNeedingMore as $recipient) {
                 $nowUkt = $recipient->student->academic_information->now_ukt;
-                $currentAccepted = $recipient->nominalAccepted;
+                $currentAccepted = $recipient->nominal_accepted;
                 $difference = $nowUkt - $currentAccepted;
 
                 if ($difference > 0) {
-                    $recipient->nominalAccepted += min($difference, $additionalDonationPerRecipient);
+                    $recipient->nominal_accepted += min($difference, $additionalDonationPerRecipient); // Use nominal_accepted here
+                    $recipient->save();
                 }
             }
         }
