@@ -58,7 +58,7 @@
             </span>
         </div>
         <div class="row flex px-[100px] gap-10">
-            <span class="flex w-[370px] flex-col gap-2 mb-5">
+            <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="house_from_outside" class="font-[600] text-[16px]">Rumah Tampak Luar</label>
                 <input type="file" name="house_from_outside" id="house_from_outside"
                     class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan surat tanah">
@@ -66,7 +66,7 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
-            <span class="flex w-[370px] flex-col gap-2 mb-5">
+            <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="house_from_inside" class="font-[600] text-[16px]">Rumah Tampak Dalam</label>
                 <input type="file" name="house_from_inside" id="house_from_inside"
                     class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan STNK kendaraan Anda!">
@@ -74,11 +74,13 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
+            <span class="flex flex-1 flex-col gap-2 mb-5"></span>
         </div>
     </div>
     <div class="flex w-full px-[40px] justify-between mt-auto">
         <button class="btn-back bg-blue text-white px-10 py-2 rounded-md">Kembali</button>
 
-        <button class="btn-next bg-blue text-white px-10 py-2 rounded-md">Lanjut</button>
+        <button data-modal-target="submit-modal" data-modal-toggle="submit-modal"
+            class="btn-next bg-blue text-white px-10 py-2 rounded-md">Submit</button>
     </div>
 </div>
