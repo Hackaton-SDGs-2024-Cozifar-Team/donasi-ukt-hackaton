@@ -14,7 +14,7 @@ class DetailDonation extends Model
 
     public function donation() : BelongsTo
     {
-        return $this->belongsTo(Donation::class, 'id',);
+        return $this->belongsTo(Donation::class, 'id_donation','id_donation');
     }
 
     public function periode() : BelongsTo
