@@ -72,24 +72,6 @@
                 @enderror
             </span>
             <span class="flex flex-1 flex-col gap-2 mb-5">
-                <label for="father_name" class="font-[600] text-[16px]">Nama Ayah/Wali</label>
-                <input type="text" name="father_name" id="father_name" class="bg-grey border-none px-5 py-3 rounded-md"
-                    placeholder="Masukan ayah/wali Anda!">
-                @error('email')
-                <p class="text-red">{{ $message }}</p>
-                @enderror
-            </span>
-            <span class="flex flex-1 flex-col gap-2 mb-5">
-                <label for="mother_name" class="font-[600] text-[16px]">Nama Ibu/Wali</label>
-                <input type="text" name="mother_name" id="mother_name" class="bg-grey border-none px-5 py-3 rounded-md"
-                    placeholder="Masukan nama ibu/wali Anda!">
-                @error('email')
-                <p class="text-red">{{ $message }}</p>
-                @enderror
-            </span>
-        </div>
-        <div class="row flex justify-center items-center px-[100px] gap-10">
-            <span class="flex w-[370px] flex-col gap-2 mb-5">
                 <label for="address" class="font-[600] text-[16px]">Alamat</label>
                 <textarea type="text" name="address" id="address" rows="4"
                     class="bg-grey border-none px-5 py-3 rounded-md"
@@ -98,7 +80,10 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
+            <div class="flex-1">
+            </div>
         </div>
+
     </div>
     <div class="flex w-full px-[40px] justify-between mt-auto">
         <button class="btn-back bg-blue text-white px-10 py-2 rounded-md">Kembali</button>

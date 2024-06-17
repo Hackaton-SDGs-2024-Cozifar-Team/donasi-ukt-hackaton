@@ -52,6 +52,7 @@
                 @include('all-role.pages.form-register.informasi-tambahan')
             </form>
         </div>
+        @include('all-role.components.popup.form-register.submit-popup')
     </section>
 
     @yield('register')
@@ -82,7 +83,9 @@
                 if (pages < 5) {
                     pages += 1;
                 } else {
-                    $('#form-recipient').submit();
+                    $('.btn-submit').click(function(event){
+                        $('#form-recipient').submit();
+                    });
                 }
             });
 

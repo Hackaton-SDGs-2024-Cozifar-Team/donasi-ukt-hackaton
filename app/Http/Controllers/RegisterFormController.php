@@ -70,7 +70,6 @@ class RegisterFormController extends Controller
             'house_from_inside' => $request->house_from_inside,
         ]);
 
-
         if($user_update){
             return redirect('/');
         }

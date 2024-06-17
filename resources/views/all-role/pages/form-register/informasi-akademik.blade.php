@@ -58,7 +58,7 @@
             </span>
         </div>
         <div class="row flex justify-center px-[100px] gap-10">
-            <span class="flex w-[370px] flex-col gap-2 mb-5">
+            <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="last_gpa" class="font-[600] text-[16px]">IPK Terakhir</label>
                 <input type="number" name="last_gpa" id="last_gpa" class="bg-grey border-none px-5 py-3 rounded-md"
                     placeholder="Masukan IPK terakhir Anda!">
@@ -66,7 +66,7 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
-            <span class="flex w-[370px] flex-col gap-2 mb-5">
+            <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="now_ukt" class="font-[600] text-[16px]">UKT Sekarang</label>
                 <input type="number" name="now_ukt" id="now_ukt" class="bg-grey border-none px-5 py-3 rounded-md"
                     placeholder="Masukan UKT Anda!">
@@ -74,6 +74,7 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
+            <span class="flex flex-1 flex-col gap-2 mb-5"></span>
         </div>
     </div>
     <div class="flex w-full px-[40px] justify-between mt-auto">

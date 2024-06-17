@@ -110,7 +110,7 @@
             </span>
         </div>
         <div class="row flex justify-center px-[100px] gap-10">
-            <span class="flex w-[370px] flex-col gap-2 mb-5">
+            <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="phone_number" class="font-[600] text-[16px]">Nomor HP Ortu</label>
                 <input type="number" name="phone_number" id="phone_number"
                     class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan nomor HP orang tua!">
@@ -118,6 +118,8 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
+            <span class="flex flex-1 flex-col gap-2 mb-5"></span>
+            <span class="flex flex-1 flex-col gap-2 mb-5"></span>
         </div>
     </div>
     <div class="flex w-full px-[40px] justify-between mt-auto">
