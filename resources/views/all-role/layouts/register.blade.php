@@ -55,6 +55,7 @@
         @include('all-role.components.popup.form-register.submit-popup')
     </section>
 
+    @include('sweetalert::alert')
     @yield('register')
     <script>
         $(document).ready(function(){

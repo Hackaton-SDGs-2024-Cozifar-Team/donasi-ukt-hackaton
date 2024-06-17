@@ -73,7 +73,7 @@
             </span>
             <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="address" class="font-[600] text-[16px]">Alamat</label>
-                <textarea type="text" name="address" id="address" rows="4"
+                <textarea style="resize: none;" type="text" name="address" id="address" rows="4"
                     class="bg-grey border-none px-5 py-3 rounded-md"
                     placeholder="Masukan alamat lengkap Anda!"></textarea>
                 @error('email')

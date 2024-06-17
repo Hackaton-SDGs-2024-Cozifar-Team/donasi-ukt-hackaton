@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class student extends Model
 {
     use HasFactory;
+    protected $guarded = ['id_student'];
+    protected $primaryKey = 'id_student';
+    protected $table = 'students';
 
     public function users() : HasOne
     {
