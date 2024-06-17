@@ -14,38 +14,40 @@
                   <div class="card " >
                     <div class="table-responsive text-nowrap p-3">
                     <div class="d-inline-block mb-3">
-                    <a href="/admin/exam/create"  class="btn btn-primary d-flex align-items-center">Tambah</a>
+                    <a href="{{ route('timeline.create') }}"  class="btn btn-primary d-flex align-items-center">Tambah</a>
                     </div>
                       <table id="myTable" class="table table-hover">
                         <thead>
                           <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Banyak Soal</th>
-                            <th>Durasi</th>
+                            <th>Tahapan</th>
+                            <th>Judul</th>
+                            <th>Start</th>
+                            <th>Deadline</th>
+                            <th>Deskripsi</th>
                             <th>Actions</th>
                           </tr>
                         </thead>
                         <tbody>
                             
-                          {{-- @foreach ($data as $item)
+                          @foreach ($timelines as $timeline)
                           <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item['name'] }}</td>
-                            <td>{{ $item['amount_question'] }}</td>
-                            <td>{{ $item['duration'] }} menit</td>
+                            <td>{{ $timeline['stages'] }}</td>
+                            <td>{{ $timeline['title_timeline'] }}</td>
+                            <td>{{ $timeline['start'] }}</td>
+                            <td>{{ $timeline['deadline'] }}</td>
+                            <td>{{ $timeline['description'] }}</td>
                             <td class="d-flex gap-2">            
-                              <form action="/admin/exam/{{ $item['id'] }}" method="post">
+                              <form action="/admin/exam/{{ $timeline['id'] }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" onclick="return confirm('Apakah yakin untuk menghapus')" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
                               </form>
                               
-                              <a class="btn btn-warning" href="/admin/exam/{{ $item['id'] }}/edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
+                              <a class="btn btn-warning" href="/admin/exam/{{ $timeline['id'] }}/edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
                               <a class="btn btn-success" href="/admin/exam/" role="button"><i class="fa-solid fa-circle-info"></i></a>
                             </td>
                           </tr>
-                          @endforeach --}}
+                          @endforeach
                           
                         </tbody>
                        

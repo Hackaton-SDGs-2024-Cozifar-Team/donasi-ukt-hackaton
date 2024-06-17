@@ -487,14 +487,34 @@
     const statisticsChart = new ApexCharts(chartOrderStatistics, orderChartConfig);
     statisticsChart.render();
   }
+  var month = ['','mei'];
+  var nominal = ['10000','5000000'];
+  $.ajax({
 
+    url: "/api/data-grafik",
+    method: "get",
+    success(res) {
+      // console.log(res);
+      res.forEach(data => {
+        month.push(data.month_name);
+        nominal.push(data.jumlah)
+      });
+        
+    },
+    error(err) {
+        console.log(err)
+    }
+})
+
+console.log(month);
+console.log(nominal);
   // Income Chart - Area chart
   // --------------------------------------------------------------------
   const incomeChartEl = document.querySelector('#incomeChart'),
     incomeChartConfig = {
       series: [
         {
-          data: [24, 21, 30, 22, 42, 26, 35, 29]
+          data: nominal
         }
       ],
       chart: {
@@ -558,7 +578,7 @@
         }
       },
       xaxis: {
-        categories: ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        categories: month,
         axisBorder: {
           show: false
         },
@@ -577,8 +597,8 @@
         labels: {
           show: false
         },
-        min: 10,
-        max: 50,
+        min: 10000,
+        max: 10000000,
         tickAmount: 4
       }
     };
