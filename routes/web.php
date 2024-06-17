@@ -35,6 +35,7 @@ Route::post('/authenticate',[LoginController::class,'authenticate']);
 Route::middleware('auth')->group(function () {
     Route::get('/form-register',[RegisterFormController::class,'index']);
     Route::get('/form-donasi',[DonationController::class,'index']);
+    Route::get('/form-donasi-developer',[DonationController::class,'donationDev']);
     Route::post('/add-recipient',[RegisterFormController::class,'addRecipient']);
 
     Route::prefix('admin')->group(function () {

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Form Register | Donasi UKT</title>
+    <title>Form Register | Donasi Dev</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     @vite('resources/css/app.css')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -41,14 +41,14 @@
                                 d="m1 9 4-4-4-4" />
                         </svg>
                         <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400"> Form
-                            Form Donasi UKT</span>
+                             Donasi Developer</span>
                     </div>
                 </li>
             </ol>
         </nav>
         <div id="informasi-pribadi"
             class="w-full py-[100px] bg-white shadow-lg border flex flex-col justify-center items-center">
-            <h1 class="font-bold text-[22px] text-black">Form Donasi UKT</h1>
+            <h1 class="font-bold text-[22px] text-black">Form Donasi Developer(Pembuat)</h1>
             <p class="text-gray-500">Informasi Donatur</p>
             {{-- <form class="w-full" method="post"> --}}
             @csrf
@@ -90,6 +90,11 @@
                         @enderror
                     </span>
                 </div>
+                <ul>
+                    <li class="px-3 text-red-700">- Uang akan digunakan untuk membeli hosting dan peralatan yang dibutuhkan tim</li>
+                    <li class="px-3 text-red-700">- Uang akan digunakan untuk membeli hosting dan peralatan yang dibutuhkan tim</li>
+                    <li class="px-3 text-red-700">- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, impedit necessitatibus architecto perferendis hic at dicta maxime quia assumenda </li>
+                </ul>
             </div>
             <div class="flex w-full px-[40px] pt-[100px] justify-center">
                 <button class="bg-blue text-white px-10 py-2 rounded-md" id="bayar">Donasi Sekarang</button>
@@ -122,7 +127,7 @@
                     user_id: id,
                     no_telp: no_telp,
                     address: address,
-                    type: "ukt"
+                    type: "developer"
                 }
                 var token = "";
                 $.ajax({
