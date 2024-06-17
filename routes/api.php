@@ -23,5 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/getToken', [DonationController::class,'getToken']);
+Route::post('/callback', [DonationController::class,'callback']);
 
 Route::get('/data-grafik', [DashboardController::class,'dataGrafik']);

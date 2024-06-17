@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id_detail_donation');
             $table->string('id_donation');
             $table->unsignedBigInteger('id_periode');
+            $table->enum('type_donation', ['ukt','developer']);
             $table->date('donation_date');
             $table->integer('nominal_donation');
             $table->string('payment_methode', 20);
