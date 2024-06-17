@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\timeline;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
     public function index(){
-        return view('all-role.layouts.index');
+        $timelines = timeline::all();
+        return view('all-role.layouts.index',[
+            'timelines'=> $timelines
+        ]);
     }
 }

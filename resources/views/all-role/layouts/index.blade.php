@@ -62,7 +62,8 @@
     <section id="timeline-section" class="flex flex-col justify-center items-center">
         <h2 class="bg-black text-white px-8 py-2 mb-14">TIMELINE PENDAFTARAN</h2>
         <div class="text-black flex flex-col">
-            @for ($i = 0; $i < 4; $i++) <div class="card-timeline flex gap-6">
+            @foreach($timelines as $timeline)
+             <div class="card-timeline flex gap-6">
                 <div class="flex flex-col items-center">
                     <div class="w-12 h-12 bg-blue text-white flex justify-center items-center rounded-full">
                         <i class="ri-calendar-fill"></i>
@@ -70,12 +71,12 @@
                     <span class="relative block w-[2px] h-[75px] bg-gray-300"></span>
                 </div>
                 <div>
-                    <h5 class="text-[20px] font-semibold">Pendaftaran dan Pengajuan Pendaftar</h5>
-                    <h6 class="text-gray-500">3 Juni - 3 Juli 2024</h6>
-                    <p>Pendaftaran dilakukan secara daring dan akan diteruskan ke proses Verifikasi.</p>
+                    <h5 class="text-[20px] font-semibold">{{ $timeline->title_timeline }}</h5>
+                    <h6 class="text-gray-500">{{ $timeline->start }} - {{ $timeline->deadline }} </h6>
+                    <p>{{ $timeline->description }}</p>
                 </div>
-        </div>
-        @endfor
+            </div>
+            @endforeach
     </section>
     {{-- pengumuman section --}}
     <section class="bg-gradient-to-r from-[#125C9D] to-[#4F129D]">

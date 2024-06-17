@@ -11,7 +11,7 @@ class SubmissionController extends Controller
 {
     public function index()
     {
-        $submision_list = DonationRegistration::all();
+        $submision_list = DonationRegistration::all()->where('status', 'Pengajuan');
 
         return view("admin.layouts.submission", [
             "title" => "Pengajuan",
@@ -21,13 +21,7 @@ class SubmissionController extends Controller
 
     public function detailSubmission($id_user)
     {
-        $submission = Student::with([
-            'users',
-            'academic_information',
-            'family_information',
-            'financial_information',
-            'additional_information'
-        ])->where('id_user', $id_user)->firstOrFail();
+        $submission = Student::all()->where('id_user', $id_user)->firstOrFail();
 
         return view("admin.layouts.detail_submissions", [
             "title" => "Detail Pengajuan",
@@ -40,5 +34,6 @@ class SubmissionController extends Controller
         $submission = DonationRegistration::where('id_donation_registration', $id)->firstOrFail();
         $submission->status = "Diterima";
         $submission->save();
+        return redirect()->route('submission.index');
     }
 }
