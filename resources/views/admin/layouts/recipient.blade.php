@@ -31,7 +31,7 @@
                                 <td>{{ $data->student->academic_information->faculty }}</td>
                                 <td>{{ $data->student->academic_information->study_program }}</td>
                                 <td>{{ number_format($data->student->academic_information->now_ukt, 0, ',', '.') }}</td>
-                                <td>{{ number_format($data->nominalAccepted, 0, ',', '.') }}</td>
+                                <td>{{ number_format($data->nominal_accepted, 0, ',', '.') }}</td>
                                 <td class="d-flex gap-2">
                                     <a href="{{ route('submission.detail', ['id_user' => $data->student->id_user]) }}"
                                         class="btn btn-icon btn-outline-secondary">
