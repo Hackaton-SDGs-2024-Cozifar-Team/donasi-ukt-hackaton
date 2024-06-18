@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('donation_registrations', function (Blueprint $table) {
             $table->bigIncrements('id_donation_registration');
             $table->unsignedBigInteger('student_id');
-            $table->string('status', 20);
+            $table->enum('status', ['process','confirm','rejected']);
             $table->bigInteger('nominal_accepted')->nullable();
             $table->unsignedBigInteger('id_periode');
 

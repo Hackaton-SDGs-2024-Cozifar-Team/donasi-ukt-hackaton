@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('mother_occupation', 30);
             $table->integer('dependents');
             $table->char('phone_number', 13);
+            $table->text('family_photo');
             $table->timestamps();
         });
     }

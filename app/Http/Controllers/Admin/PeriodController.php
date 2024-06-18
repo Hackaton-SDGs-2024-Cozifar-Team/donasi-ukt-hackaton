@@ -35,7 +35,7 @@ class PeriodController extends Controller
         $newPeriode = Periode::create($validatedData);
 
         Periode::where('id_periode', '!=', $newPeriode->id_periode)
-            ->update(['status_period' => 'Tidak Aktif']);
+            ->update(['status_period' => 'non active']);
 
         return redirect()->route('periode.index');
     }
