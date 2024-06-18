@@ -16,6 +16,8 @@ class DummyFamilyInformation extends Seeder
         $userData = [
             [
                 'father_name' => 'Joko',
+                'number_kk' => '321313213332',
+                'nik_headof_family' => '3512381731283',
                 'father_living_status' => 'Hidup',
                 'father_last_education' => 'SMK',
                 'father_occupation' => 'Programmer',
