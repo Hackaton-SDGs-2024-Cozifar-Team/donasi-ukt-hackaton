@@ -1,8 +1,8 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo mb-2">
         <a href="index.html" class="app-brand-link">
-            <span  style="background-image: #111" class="app-brand-logo demo">
-              <img src="{{ asset('/images/logoukt.png') }}" width="30px" alt="">
+            <span style="background-image: #111" class="app-brand-logo demo">
+                <img src="{{ asset('/images/logoukt.png') }}" width="30px" alt="">
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2">Donasi UKT</span>
         </a>
@@ -53,24 +53,30 @@
             </a>
         </li>
         <li class="menu-item @active('user.*')">
-        <a href="{{ route('user.index') }}" class="menu-link">
-          <i class="menu-icon tf-icons fa-solid fa-users"></i>
-          <div data-i18n="Analytics">User</div>
-        </a>
-      </li>
+            <a href="{{ route('user.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons fa-solid fa-users"></i>
+                <div data-i18n="Analytics">User</div>
+            </a>
+        </li>
 
-      <li class="menu-item @active('report.*')">
-        <a href="{{ route('report.index') }}" class="menu-link">
-          <i class="menu-icon tf-icons fa-solid fa-list-ul"></i>
-          <div data-i18n="Analytics">Laporan</div>
-        </a>
-      </li>
+        <li class="menu-item @active('report.*')">
+            <a href="{{ route('report.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons fa-solid fa-list-ul"></i>
+                <div data-i18n="Analytics">Laporan</div>
+            </a>
+        </li>
 
-        {{-- <li class="menu-item @active('mahasiswa.index')">
+        <li class="menu-item @active('mahasiswa.index')">
             <a href="{{ route('mahasiswa.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard Mahasiswa</div>
             </a>
-        </li> --}}
+        </li>
+        <li class="menu-item @active('status.index')">
+            <a href="{{ route('status.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons fa-solid fa-circle-info"></i>
+                <div data-i18n="Analytics">Status</div>
+            </a>
+        </li>
     </ul>
 </aside>
