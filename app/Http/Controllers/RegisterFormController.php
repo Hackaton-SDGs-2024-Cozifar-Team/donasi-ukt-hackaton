@@ -81,7 +81,7 @@ class RegisterFormController extends Controller
             'gender' => $request->gender,
             'no_telp' => $request->no_telp,
             'address' => $request->address,
-            'photo' => $request->photo_name,
+            'photo' => $photo_name,
             'role' => 'recipient',
         ]);
 
@@ -111,7 +111,7 @@ class RegisterFormController extends Controller
             'mother_occupation' => $request->mother_occupation,
             'dependents' => $request->dependents,
             'phone_number' => $request->phone_number,
-            'family_photo' => $request->family_photo_name,
+            'family_photo' => $family_photo_name,
         ]);
 
         $proof_father_income = $request->file('proof_father_income');

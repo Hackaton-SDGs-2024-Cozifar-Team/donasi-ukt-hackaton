@@ -11,7 +11,7 @@ class DonationRegistration extends Model
     use HasFactory;
     protected $guarded = ['id_donation_registration'];
     protected $primaryKey = 'id_donation_registration';
-    protected $table = 'donation_registration';
+    protected $table = 'donation_registrations';
 
     public function student() :BelongsTo
     {
