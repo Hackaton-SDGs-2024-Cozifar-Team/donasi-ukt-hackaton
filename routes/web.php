@@ -51,6 +51,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/',[TimelineController::class,'index'])->name('timeline.index');
             Route::get('/create',[TimelineController::class,'create'])->name('timeline.create');
             Route::post('/store',[TimelineController::class,'store'])->name('timeline.store');
+            Route::get('/{id}/edit',[TimelineController::class,'edit'])->name('timeline.edit');
+            Route::post('/{id}/update',[TimelineController::class,'update'])->name('timeline.update');
+            Route::post('/{id}/delete',[TimelineController::class,'destroy'])->name('timeline.delete');
         });
     });
 
