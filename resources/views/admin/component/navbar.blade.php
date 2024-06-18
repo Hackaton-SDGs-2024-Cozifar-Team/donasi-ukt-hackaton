@@ -84,10 +84,10 @@ id="layout-navbar"
           <div class="dropdown-divider"></div>
         </li>
         <li>
-          <form action="/logout" method="POST">
-            @csrf
-            <button class="btn" type="submit">Logout</button>
-          </form>
+          <a class="dropdown-item" href="/logout">
+            <i class="bx bx-cog me-2"></i>
+            <span class="align-middle">Logout</span>
+          </a>
         </li>
       </ul>
     </li>
