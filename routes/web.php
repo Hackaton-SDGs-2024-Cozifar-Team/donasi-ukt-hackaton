@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Mahasiswa\DashboardMahasiswaController;
+use App\Http\Controllers\Mahasiswa\StatusMahasiswaController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\RegisterFormController;
 use Illuminate\Support\Facades\Route;
@@ -61,5 +62,6 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('mahasiswa')->group(function () {
         Route::get('/dashboard',[DashboardMahasiswaController::class,'index'])->name('mahasiswa.index');
+        Route::get('/status',[StatusMahasiswaController::class,'index'])->name('status.index');
     });
 });
