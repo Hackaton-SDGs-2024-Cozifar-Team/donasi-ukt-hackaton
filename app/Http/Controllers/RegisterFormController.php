@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\AcademicInformation;
 use App\Models\AdditionalInformation;
+use App\Models\DonationRegistration;
 use App\Models\FamilyInformation;
 use App\Models\FinancialInformation;
+use App\Models\Periode;
 use App\Models\student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,6 +29,9 @@ class RegisterFormController extends Controller
             'date_birth' => 'required',
             'gender' => 'required',
             'no_telp' => 'required',
+            'address' => 'required',
+            'photo' => 'required',
+            'family_photo' => 'required',
             'university' => 'required',
             'faculty' => 'required',
             'study_program' => 'required',
@@ -66,11 +71,17 @@ class RegisterFormController extends Controller
 
         $user  = User::where('id', Auth::user()->id)->first();
 
+        $photo = $request->file('photo');
+        $photo_name = time() . '_photo.' . $photo->getClientOriginalExtension();
+        $photo->move(public_path('img/data-pendaftar'), $photo_name);
+
         $user_update = $user->update([
             'place_birth' => $request->place_birth,
             'date_birth' => $request->date_birth,
             'gender' => $request->gender,
             'no_telp' => $request->no_telp,
+            'address' => $request->address,
+            'photo' => $request->photo_name,
             'role' => 'recipient',
         ]);
 
@@ -85,6 +96,10 @@ class RegisterFormController extends Controller
             'now_ukt' => $request->now_ukt,
         ]);
 
+        $family_photo = $request->file('family_photo');
+        $family_photo_name = time() . '_family_photo.' . $family_photo->getClientOriginalExtension();
+        $family_photo->move(public_path('img/data-pendaftar'), $family_photo_name);
+
         $family_information = FamilyInformation::create([
             'father_name' => $request->father_name,
             'father_living_status' => $request->father_living_status,
@@ -96,10 +111,9 @@ class RegisterFormController extends Controller
             'mother_occupation' => $request->mother_occupation,
             'dependents' => $request->dependents,
             'phone_number' => $request->phone_number,
+            'family_photo' => $request->family_photo_name,
         ]);
 
-        // $proof_father_income_path = $request->file('proof_father_income')->store('public/img/data-pendaftar');
-        // $proof_mother_income_path = $request->file('proof_mother_income')->store('public/img/data-pendaftar');
         $proof_father_income = $request->file('proof_father_income');
         $proof_mother_income = $request->file('proof_mother_income');
 
@@ -154,12 +168,20 @@ class RegisterFormController extends Controller
             'house_from_inside' => $house_from_inside_name,
         ]);
 
-        student::create([
+        $student = student::create([
             'id_user' => Auth::user()->id,
             'id_academic_information' => $academic_information->id_academic_information,
             'id_family_information' => $family_information->id_family_information,
             'id_financial_information' => $financial_information->id_financial_information,
             'id_additional_information' => $additional_information->id_additional_information,
+        ]);
+
+        $periode_active = Periode::where('status_period', 'active')->first();
+
+        DonationRegistration::create([
+            'student_id' => $student->id_student,
+            'status' => 'process',
+            'id_periode' => $periode_active->id_periode,
         ]);
 
         if($user_update){

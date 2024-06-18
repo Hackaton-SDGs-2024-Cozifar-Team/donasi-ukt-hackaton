@@ -19,8 +19,10 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female'])->default('male')->nullable();
             $table->string('email', 30)->unique();
             $table->string('password', 60);
+            $table->text('address');
+            $table->string('photo');
             $table->char('no_telp', 13)->nullable();
-            $table->enum('role', ['admin', 'recipient', 'donatur'])->default('recipient');
+            $table->enum('role', ['admin', 'recipient', 'donatur'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
