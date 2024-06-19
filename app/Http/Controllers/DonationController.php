@@ -84,10 +84,18 @@ class DonationController extends Controller
     }
 
     public function callback(Request $request){
+
+                
        
                 $donation = Donation::where("id_donation",$request->order_id)->firstOrFail();
                 $donation->status = 'paid';
                 $donation->save();
+
+                $user = User::find($donation->id_user);
+                if($user->role == null){
+                    $user->role = "donatur";
+                    $user->save();
+                }
 
                 $detail_donation = DetailDonation::where('id_donation', $request->order_id)->first();
                 $detail_donation->payment_methode = $request->payment_type;
