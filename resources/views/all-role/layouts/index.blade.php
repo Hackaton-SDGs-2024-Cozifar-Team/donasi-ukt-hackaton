@@ -24,7 +24,8 @@
         </div>
         <h1 class="font-bold text-[32px]">PROGAM DONASI UKT</h1>
         <h3 class="font-medium text-[20px]">“Bersama, Membangun Masa Depan Pendidikan yang Lebih Baik”</h3>
-        <h4 class="max-w-[800px] text-center text-[18px] font-thin mt-3">Dukungan Anda melalui donasi UKT adalah langkah
+        <h4 class="max-w-[800px] text-center text-[18px] font-thin mt-3 text-justify">Dukungan Anda melalui donasi UKT
+            adalah langkah
             nyata dalam
             mendukung
             Sustainable
@@ -43,14 +44,33 @@
         <h2 class="bg-black text-white px-8 py-2 mb-14">ABOUT ME</h2>
         <div class="flex items-center text-black">
             <div class="w-1/2">
-                <h3 class="font-bold text-[28px]">PROGAM DONASI UKT</h3>
-                <h4 class="max-w-[600px] text-[20px] font-thin">Donasi UKT adalah platform donasi UKT yang bertujuan
+                <h3 class="font-bold text-[30px] mb-2">PROGAM DONASI UKT</h3>
+                <h4 class="max-w-[600px] text-[20px] font-thin text-justify">Donasi UKT adalah platform donasi UKT yang
+                    bertujuan
                     untuk
                     mendukung mahasiswa
                     yang membutuhkan
                     bantuan biaya kuliah. Dengan berdonasi, Anda tidak hanya membantu mereka menyelesaikan pendidikan
                     tinggi tetapi juga berkontribusi dalam mencapai Sustainable Development Goals (SDGs), khususnya
                     dalam upaya ketidaksetaraan (SDG 10).</h4>
+                <div class="flex gap-2 mt-4">
+                    <div id="donation-amount"
+                        class="bg-white text-blue shadow-sm border px-8 py-2 border-blue flex flex-col justify-center items-center rounded-md">
+                        <h3 class="text-[20px] font-bold">+0 Juta</h3>
+                        <h3>Uang Donasi</h3>
+                    </div>
+                    <div id="donors-count"
+                        class="bg-white text-blue shadow-sm border border-blue px-8 py-2 flex flex-col justify-center items-center rounded-md">
+                        <h3 class="text-[20px] font-bold">0 Donatur</h3>
+                        <h3>Terdaftar</h3>
+                    </div>
+                    <div id="verified-recipients"
+                        class="bg-white text-blue shadow-sm border border-blue px-8 py-2 flex flex-col justify-center items-center rounded-md">
+                        <h3 class="text-[20px] font-bold">0 Calon Penerima</h3>
+                        <h3>Terverifikasi</h3>
+                    </div>
+                </div>
+
                 <a href="/form-donasi" class="button-blue mt-4"><span>Donasi Sekarang</span"></a>
             </div>
             <div class="w-1/2">
@@ -87,10 +107,40 @@
                     Akan
                     dilaksanakan
                     umumkan pada tanggal 10 Juli 2024</h4>
+                <div class="flex justify-start mt-4 gap-8">
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <p id="days"
+                            class="w-[60px] h-[80px] bg-white rounded-full text-[24px] font-bold text-black flex justify-center items-center">
+                            0
+                        </p>
+                        <p class="text-white">Hari</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <p id="hours"
+                            class="w-[60px] h-[80px] bg-white rounded-full text-[24px] font-bold text-black flex justify-center items-center">
+                            0
+                        </p>
+                        <p class="text-white">Jam</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <p id="minutes"
+                            class="w-[60px] h-[80px] bg-white rounded-full text-[24px] font-bold text-black flex justify-center items-center">
+                            0
+                        </p>
+                        <p class="text-white">Menit</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <p id="seconds"
+                            class="w-[60px] h-[80px] bg-white rounded-full text-[24px] font-bold text-black flex justify-center items-center">
+                            0
+                        </p>
+                        <p class="text-white">Detik</p>
+                    </div>
+                </div>
             </div>
-            <div class="w-1/2 flex gap-3 justify-end">
-                <img src="../img/kemendikbud.png" alt="" class="w-[130px]">
-                <img src="../img/sgds-logo-transparent.png" alt="" class="w-[130px]">
+            <div class="w-1/2 flex gap-3 justify-end items-center">
+                <img src="../img/kemendikbud.png" alt="" class="w-[150px]">
+                <img src="../img/sgds-logo-transparent.png" alt="" class="w-[150px]">
             </div>
         </div>
     </section>
@@ -169,11 +219,13 @@
         $('#scroll-button').click(function(){
             $('html, body').animate({
                 scrollTop: $('#about-me').offset().top
-            }, 600); // 1000 adalah durasi animasi dalam milidetik
+            }, 600);
         });
     });
     </script>
 
+    <script src="/js/timer.js"></script>
+    <script src="/js/progam-donasi.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>

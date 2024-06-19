@@ -58,10 +58,12 @@
                                     }}</span>
                             </div>
                             <ul class="py-2" aria-labelledby="user-menu-button">
+                                @if (Auth::user()->role == 'admin')
                                 <li>
-                                    <a href="#"
+                                    <a href="/admin/dashboard"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Admin</a>
                                 </li>
+                                @endif
                                 <li>
                                     <a href="/logout" type="submit"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
