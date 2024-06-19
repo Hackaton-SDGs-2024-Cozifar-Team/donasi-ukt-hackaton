@@ -65,6 +65,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('mahasiswa')->group(function () {
         Route::get('/dashboard',[DashboardMahasiswaController::class,'index'])->name('mahasiswa.index');
+        Route::post('/update-academic/{id}',[DashboardMahasiswaController::class,'updateAcademic'])->name('mahasiswa.update-academic');
         Route::get('/status',[StatusMahasiswaController::class,'index'])->name('status.index');
     });
 });
