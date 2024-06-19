@@ -4,7 +4,7 @@
 @section('auth')
 <section id="login" class="flex p-[0] m-[0]">
     <div class="w-1/2 h-[100vh] bg-blue rounded-r-[50px] hidden lg:flex flex-col gap-12 justify-center items-center">
-        <img src="{{ asset('images/login.png') }}" alt="">
+        <img src="../img/img_login.svg" alt="" class="w-[650px]">
     </div>
     <div class="w-1/2 h-[100vh] py-[50px] flex justify-center items-center">
         <div class="w-full flex justify-center flex-col items-center">

@@ -72,6 +72,17 @@
                 @enderror
             </span>
             <span class="flex flex-1 flex-col gap-2 mb-5">
+<<<<<<< Updated upstream
+=======
+                <label for="photo" class="font-[600] text-[16px]">Foto Pribadi</label>
+                <input type="file" name="photo" id="photo" class="bg-grey border-none px-5 py-1 rounded-md"
+                    placeholder="Masukan STNK kendaraan Anda!">
+                @error('email')
+                <p class="text-red">{{ $message }}</p>
+                @enderror
+            </span>
+            <span class="flex flex-1 flex-col gap-2 mb-5">
+>>>>>>> Stashed changes
                 <label for="address" class="font-[600] text-[16px]">Alamat</label>
                 <textarea style="resize: none;" type="text" name="address" id="address" rows="4"
                     class="bg-grey border-none px-5 py-3 rounded-md"

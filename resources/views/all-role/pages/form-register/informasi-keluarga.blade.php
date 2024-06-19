@@ -118,7 +118,18 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
+<<<<<<< Updated upstream
             <span class="flex flex-1 flex-col gap-2 mb-5"></span>
+=======
+            <span class="flex flex-1 flex-col gap-2 mb-5">
+                <label for="family_photo" class="font-[600] text-[16px]">Foto Keluarga</label>
+                <input type="file" name="family_photo" id="family_photo"
+                    class="bg-grey border-none px-5 py-1 rounded-md" placeholder="Masukan STNK kendaraan Anda!">
+                @error('email')
+                <p class="text-red">{{ $message }}</p>
+                @enderror
+            </span>
+>>>>>>> Stashed changes
             <span class="flex flex-1 flex-col gap-2 mb-5"></span>
         </div>
     </div>
