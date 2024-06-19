@@ -40,4 +40,42 @@ class TimelineController extends Controller
 
         return redirect()->route("timeline.index")->with("success","Data berhasil ditambahkan");
     }
+
+    public function edit($id)
+    {
+        $timeline =timeline::where("id_timeline",$id)->first();
+        return view("admin.layouts.edit-timeline",[
+            "title"=> "Edit timeline",
+            "timeline"=> $timeline
+        ]);
+    }    
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            "stages"=> "required",
+            "title_timeline"=> "required",
+            "start"=> "required",
+            "deadline"=> "required",
+            "description"=> "required",
+        ]);
+
+        $timeline = timeline::where("id_timeline",$id)->first();
+        $timeline->stages = $request->stages;
+        $timeline->title_timeline = $request->title_timeline;
+        $timeline->start = $request->start;
+        $timeline->deadline = $request->deadline;
+        $timeline->id_periode = 1;
+        $timeline->description = $request->description;
+        $timeline->save();
+
+        return redirect()->route("timeline.index")->with("success","Data berhasil ditambahkan");
+    }
+
+    public function destroy($id)
+    {
+        $timeline = timeline::where("id_timeline",$id)->first();
+        $timeline->delete();
+        return redirect()->route("timeline.index")->with("success","Data berhasil dihapus");
+    }
 }

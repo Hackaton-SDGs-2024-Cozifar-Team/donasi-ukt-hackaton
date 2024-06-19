@@ -15,10 +15,10 @@ class DashboardController extends Controller
     public function index()
     {
         $pengajuan = DonationRegistration::all()->count();
-        $jumlahDiterima = DonationRegistration::where('status','diterima')->get()->count();
-        $jumlahDitolak = DonationRegistration::where('status','ditolak')->get()->count();
+        $jumlahDiterima = DonationRegistration::where('status','confirm')->get()->count();
+        $jumlahDitolak = DonationRegistration::where('status','rejected')->get()->count();
         $donatur = Donation::where("status","paid")->get()->groupBy("id_user")->count();
-        $donations = Donation::where("status","unpaid")->get();
+        $donations = Donation::where("status","paid")->get();
         $uangDonasi = 0;
 
         

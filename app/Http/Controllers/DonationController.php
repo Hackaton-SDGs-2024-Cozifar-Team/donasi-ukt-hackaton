@@ -13,6 +13,11 @@ class DonationController extends Controller
         return view('all-role.layouts.donation');
     }
     
+    public function donationDev()
+    {
+        return view('all-role.layouts.donation-developer');
+    }
+
     public function getToken(Request $request){
 
         $rand_id = "ORD".time().rand(1,9);
@@ -26,9 +31,10 @@ class DonationController extends Controller
         $detail_donation = DetailDonation::create([
             "id_donation"=> $donation->id_donation,
             "id_periode"=> 1,
+            "type_donation"=> $request->type,
             "donation_date"=> now(),
             "nominal_donation"=> $request->price,
-            "payment_methode"=> "bca",
+            "payment_methode"=> "-",
         ]);
 
 
@@ -44,6 +50,13 @@ class DonationController extends Controller
         \Midtrans\Config::$is3ds = true;
 
         $user = User::find($request->user_id);
+        $name_donation = "";
+
+        if($request->type == "ukt"){
+            $name_donation = "Donasi UKT";
+        }elseif($request->type == "developer"){
+            $name_donation = "Donasi Developer";
+        }
         $params = array(
             'transaction_details' => array(
                 'order_id' => "$donation->id_donation",
@@ -51,7 +64,7 @@ class DonationController extends Controller
             ),
             'item_details'=> array(
                 [
-                    'name'=> 'Donasi UKT',
+                'name'=> $name_donation,
                 'price'=> $request->price,
                 'quantity'=> 1,
                 'id'=> 1,
@@ -68,5 +81,17 @@ class DonationController extends Controller
              
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         return response()->json(['token'=> $snapToken]);
+    }
+
+    public function callback(Request $request){
+       
+                $donation = Donation::where("id_donation",$request->order_id)->firstOrFail();
+                $donation->status = 'paid';
+                $donation->save();
+
+                $detail_donation = DetailDonation::where('id_donation', $request->order_id)->first();
+                $detail_donation->payment_methode = $request->payment_type;
+                $detail_donation->save();
+                return response()->json(["message"=> "data berhasil ditambahkan"]);
     }
 }

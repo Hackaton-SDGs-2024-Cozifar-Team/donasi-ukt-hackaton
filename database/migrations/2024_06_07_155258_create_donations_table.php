@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('donations', function (Blueprint $table) {
-            $table->string('id_donation')->primary();
+            $table->string('id_donation')->unique();
             $table->unsignedBigInteger('id_user');
             $table->enum('status', ['paid', 'unpaid'])->default('paid');
 
