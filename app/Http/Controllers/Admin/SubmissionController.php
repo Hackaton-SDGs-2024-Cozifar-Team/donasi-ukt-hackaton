@@ -36,4 +36,12 @@ class SubmissionController extends Controller
         $submission->save();
         return redirect()->route('submission.index');
     }
+
+    public function updateStatusRejected($id)
+    {
+        $submission = DonationRegistration::where('id_donation_registration', $id)->firstOrFail();
+        $submission->status = "rejected";
+        $submission->save();
+        return redirect()->route('submission.index');
+    }
 }
