@@ -168,8 +168,8 @@
             </thead>
             {{-- @dd(now()) --}}
             <tbody class="text-center">
-                @dd(now())
-                @if ($tanggal_pengumuman > now())
+                
+                @if (strtotime($tanggal_pengumuman) < strtotime(now()))
                     @foreach ($dataDiterima as $item)
                         <tr class="senin">
                             <td class="border border-gray-300 py-3">{{ $loop->iteration }}</td>
@@ -196,7 +196,6 @@
                         </td>
                     </tr>
                 @endif
-
             </tbody>
         </table>
     </section>

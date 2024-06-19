@@ -40,7 +40,7 @@ class MainController extends Controller
 
         $date = new DateTime($originalDate);
 
-        $tanggal_pengumuman = $date->format('M d, Y 00:34:00');
+        $tanggal_pengumuman = $date->format('M d, Y 00:00:00');
         $donation_regist = DB::table('donation_registrations')
                                 ->join('periodes', 'donation_registrations.id_periode', '=', 'periodes.id_periode')
                                 ->where('donation_registrations.status', 'confirm')
