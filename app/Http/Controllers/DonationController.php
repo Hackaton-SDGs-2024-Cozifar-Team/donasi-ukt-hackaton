@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DetailDonation;
 use App\Models\Donation;
+use App\Models\Periode;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -27,10 +28,10 @@ class DonationController extends Controller
             "id_user"=> $request->user_id,
             "status"=> "unpaid",
         ]);
-
+        $periode = Periode::where("status_period","=","active")->first();
         $detail_donation = DetailDonation::create([
             "id_donation"=> $donation->id_donation,
-            "id_periode"=> 1,
+            "id_periode"=> $periode->id_periode,
             "type_donation"=> $request->type,
             "donation_date"=> now(),
             "nominal_donation"=> $request->price,

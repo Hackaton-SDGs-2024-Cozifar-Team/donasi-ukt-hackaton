@@ -20,7 +20,7 @@
                             <th>No</th>
                             <th>Periode Sekarang</th>
                             <th>Status</th>
-                            <th>Actions</th>
+                            {{-- <th>Actions</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -29,12 +29,12 @@
 
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $data->school_year }}</td>
-                                <td>{{ $data->status_period }}</td>
-                                <td>
+                                <td><span class="badge <?= $data->status_period == 'active' ? 'bg-label-success' : 'bg-label-danger'  ?> me-1">{{ $data->status_period }}</span></td>
+                                {{-- <td>
                                     <button type="button" class="btn btn-icon btn-outline-danger">
                                         <i class="bx bx-trash"></i>
                                     </button>
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>

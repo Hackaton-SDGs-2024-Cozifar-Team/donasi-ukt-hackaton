@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\DonationRegistration;
+use App\Models\Periode;
 use App\Models\student;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,9 @@ class SubmissionController extends Controller
 {
     public function index()
     {
-        $submision_list = DonationRegistration::all()->where('status', 'process');
+        $periode = Periode::where("status_period","=","active")->first();
+        $submision_list = DonationRegistration::where('status', 'process')
+        ->where("id_periode",$periode->id_periode)->get();
 
         return view("admin.layouts.submission", [
             "title" => "Pengajuan",

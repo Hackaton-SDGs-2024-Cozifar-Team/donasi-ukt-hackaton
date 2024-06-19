@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DetailDonation;
 use App\Models\Donation;
 use App\Models\DonationRegistration;
+use App\Models\Periode;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,11 +15,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $periode = Periode::where("status_period","=","active")->first();
         $pengajuan = DonationRegistration::all()->count();
         $jumlahDiterima = DonationRegistration::where('status','confirm')->get()->count();
         $jumlahDitolak = DonationRegistration::where('status','rejected')->get()->count();
         $donatur = Donation::where("status","paid")->get()->groupBy("id_user")->count();
-        $donations = Donation::where("status","paid")->get();
+        $donations = Donation::where("status","paid")
+        ->get();
         $uangDonasi = 0;
 
         
@@ -26,8 +29,9 @@ class DashboardController extends Controller
 
         foreach($donations as $donation){
             foreach($donation->detail_donation as $detail){
-             
-                $uangDonasi += $detail->nominal_donation;
+                if($periode->id_periode == $detail->id_periode){
+                    $uangDonasi += $detail->nominal_donation;
+                }
             }
         }
         return view("admin.layouts.dashboard",[

@@ -39,14 +39,7 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
-            <span class="flex flex-1 flex-col gap-2 mb-5">
-                <label for="dependents" class="font-[600] text-[16px]">Jumlah Tanggungan</label>
-                <input type="number" name="dependents" id="dependents" class="bg-grey border-none px-5 py-3 rounded-md"
-                    placeholder="Masukan bukti gaji ibu/wali Anda!">
-                @error('email')
-                <p class="text-red">{{ $message }}</p>
-                @enderror
-            </span>
+           
             <span class="flex flex-1 flex-col gap-2 mb-5">
 
             </span>

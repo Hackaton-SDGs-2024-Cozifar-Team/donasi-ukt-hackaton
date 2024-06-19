@@ -33,7 +33,13 @@
             khususnya dalam mengurangi kemiskinan dan ketidaksetaraan. Bersama, kita dapat memberikan kesempatan
             pendidikan yang merata, memberdayakan generasi muda, dan menciptakan masa depan yang lebih adil dan
             berkelanjutan.</h4>
-        <a href="/form-register" class="button-blue mt-4"><span>Daftar Sekarang</span></a>
+        @if ($checkRegistration == 0)
+            <a href="/form-register" class="button-blue mt-4"><span>Daftar Sekarang</span></a>
+        @else
+            <a href="#" onclick="alert('Anda sudah mengajukan')" class="button-blue mt-4"><span>Daftar
+                    Sekarang</span></a>
+        @endif
+
         <button id="scroll-button"
             class="w-[70px] h-[70px] bg-blue absolute bottom-12 rounded-full flex items-center justify-center shadow-md">
             <i class="ri-arrow-down-s-line text-[40px]"></i>
@@ -56,17 +62,20 @@
                 <div class="flex gap-2 mt-4">
                     <div id="donation-amount"
                         class="bg-white text-blue shadow-sm border px-8 py-2 border-blue flex flex-col justify-center items-center rounded-md">
-                        <h3 class="text-[20px] font-bold">+0 Juta</h3>
+                        <h3 class="text-[20px] font-bold">Rp Juta</h3>
+                        <input type="hidden" value="{{ $uangDonasi }}" id="uang_donasi">
                         <h3>Uang Donasi</h3>
                     </div>
                     <div id="donors-count"
                         class="bg-white text-blue shadow-sm border border-blue px-8 py-2 flex flex-col justify-center items-center rounded-md">
                         <h3 class="text-[20px] font-bold">0 Donatur</h3>
+                        <input type="hidden" value="{{ $donatur }}" id="donatur">
                         <h3>Terdaftar</h3>
                     </div>
                     <div id="verified-recipients"
                         class="bg-white text-blue shadow-sm border border-blue px-8 py-2 flex flex-col justify-center items-center rounded-md">
                         <h3 class="text-[20px] font-bold">0 Calon Penerima</h3>
+                        <input type="hidden" value="{{ $pengajuan }}" id="pengajuan">
                         <h3>Terverifikasi</h3>
                     </div>
                 </div>
@@ -82,20 +91,20 @@
     <section id="timeline-section" class="flex flex-col justify-center items-center">
         <h2 class="bg-black text-white px-8 py-2 mb-14">TIMELINE PENDAFTARAN</h2>
         <div class="text-black flex flex-col">
-            @foreach($timelines as $timeline)
-            <div class="card-timeline flex gap-6">
-                <div class="flex flex-col items-center">
-                    <div class="w-12 h-12 bg-blue text-white flex justify-center items-center rounded-full">
-                        <i class="ri-calendar-fill"></i>
+            @foreach ($timelines as $timeline)
+                <div class="card-timeline flex gap-6">
+                    <div class="flex flex-col items-center">
+                        <div class="w-12 h-12 bg-blue text-white flex justify-center items-center rounded-full">
+                            <i class="ri-calendar-fill"></i>
+                        </div>
+                        <span class="relative block w-[2px] h-[75px] bg-gray-300"></span>
                     </div>
-                    <span class="relative block w-[2px] h-[75px] bg-gray-300"></span>
+                    <div>
+                        <h5 class="text-[20px] font-semibold">{{ $timeline->title_timeline }}</h5>
+                        <h6 class="text-gray-500">{{ $timeline->start }} - {{ $timeline->deadline }} </h6>
+                        <p>{{ $timeline->description }}</p>
+                    </div>
                 </div>
-                <div>
-                    <h5 class="text-[20px] font-semibold">{{ $timeline->title_timeline }}</h5>
-                    <h6 class="text-gray-500">{{ $timeline->start }} - {{ $timeline->deadline }} </h6>
-                    <p>{{ $timeline->description }}</p>
-                </div>
-            </div>
             @endforeach
     </section>
     {{-- pengumuman section --}}
@@ -158,54 +167,54 @@
             </thead>
             <tbody class="text-center">
                 @if ($donation_registrations->count() > 0)
-                <tr class="senin">
-                    <td class="border border-gray-300 py-3">1</td>
-                    <td class="border border-gray-300 py-3">Nico Flassy</td>
-                    <td class="border border-gray-300 py-3">Teknologi Informasi</td>
-                    <td class="border border-gray-300 py-3">Teknik Informatika</td>
-                </tr>
-                <tr class="senin">
-                    <td class="border border-gray-300 py-3">1</td>
-                    <td class="border border-gray-300 py-3">Nico Flassy</td>
-                    <td class="border border-gray-300 py-3">Teknologi Informasi</td>
-                    <td class="border border-gray-300 py-3">Teknik Informatika</td>
-                </tr>
-                <tr class="senin">
-                    <td class="border border-gray-300 py-3">1</td>
-                    <td class="border border-gray-300 py-3">Nico Flassy</td>
-                    <td class="border border-gray-300 py-3">Teknologi Informasi</td>
-                    <td class="border border-gray-300 py-3">Teknik Informatika</td>
-                </tr>
-                <tr class="senin">
-                    <td class="border border-gray-300 py-3">1</td>
-                    <td class="border border-gray-300 py-3">Nico Flassy</td>
-                    <td class="border border-gray-300 py-3">Teknologi Informasi</td>
-                    <td class="border border-gray-300 py-3">Teknik Informatika</td>
-                </tr>
-                <tr class="senin">
-                    <td class="border border-gray-300 py-3">1</td>
-                    <td class="border border-gray-300 py-3">Nico Flassy</td>
-                    <td class="border border-gray-300 py-3">Teknologi Informasi</td>
-                    <td class="border border-gray-300 py-3">Teknik Informatika</td>
-                </tr>
+                    <tr class="senin">
+                        <td class="border border-gray-300 py-3">1</td>
+                        <td class="border border-gray-300 py-3">Nico Flassy</td>
+                        <td class="border border-gray-300 py-3">Teknologi Informasi</td>
+                        <td class="border border-gray-300 py-3">Teknik Informatika</td>
+                    </tr>
+                    <tr class="senin">
+                        <td class="border border-gray-300 py-3">1</td>
+                        <td class="border border-gray-300 py-3">Nico Flassy</td>
+                        <td class="border border-gray-300 py-3">Teknologi Informasi</td>
+                        <td class="border border-gray-300 py-3">Teknik Informatika</td>
+                    </tr>
+                    <tr class="senin">
+                        <td class="border border-gray-300 py-3">1</td>
+                        <td class="border border-gray-300 py-3">Nico Flassy</td>
+                        <td class="border border-gray-300 py-3">Teknologi Informasi</td>
+                        <td class="border border-gray-300 py-3">Teknik Informatika</td>
+                    </tr>
+                    <tr class="senin">
+                        <td class="border border-gray-300 py-3">1</td>
+                        <td class="border border-gray-300 py-3">Nico Flassy</td>
+                        <td class="border border-gray-300 py-3">Teknologi Informasi</td>
+                        <td class="border border-gray-300 py-3">Teknik Informatika</td>
+                    </tr>
+                    <tr class="senin">
+                        <td class="border border-gray-300 py-3">1</td>
+                        <td class="border border-gray-300 py-3">Nico Flassy</td>
+                        <td class="border border-gray-300 py-3">Teknologi Informasi</td>
+                        <td class="border border-gray-300 py-3">Teknik Informatika</td>
+                    </tr>
                 @else
-                <tr class="senin">
-                    <td class="border border-gray-300 py-[50px]" colspan="4">
-                        <div class="flex justify-center w-[450px] mx-auto items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
-                            role="alert">
-                            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                            </svg>
-                            <span class="sr-only">Info</span>
-                            <div>
-                                <span class="font-medium">Penerima donasi UKT akan di tampilkan tanggal 10 Juli
-                                    2024</span>
+                    <tr class="senin">
+                        <td class="border border-gray-300 py-[50px]" colspan="4">
+                            <div class="flex justify-center w-[450px] mx-auto items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
+                                role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Penerima donasi UKT akan di tampilkan tanggal 10 Juli
+                                        2024</span>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 @endif
 
             </tbody>
@@ -215,13 +224,13 @@
     @include('all-role.components.footer')
 
     <script>
-        $(document).ready(function(){
-        $('#scroll-button').click(function(){
-            $('html, body').animate({
-                scrollTop: $('#about-me').offset().top
-            }, 600);
+        $(document).ready(function() {
+            $('#scroll-button').click(function() {
+                $('html, body').animate({
+                    scrollTop: $('#about-me').offset().top
+                }, 600);
+            });
         });
-    });
     </script>
 
     <script src="/js/timer.js"></script>
