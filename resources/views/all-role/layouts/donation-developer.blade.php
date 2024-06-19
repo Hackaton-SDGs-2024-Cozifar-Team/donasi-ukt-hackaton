@@ -41,65 +41,88 @@
                                 d="m1 9 4-4-4-4" />
                         </svg>
                         <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400"> Form
-                             Donasi Developer</span>
+                            Donasi Developer</span>
                     </div>
                 </li>
             </ol>
         </nav>
         <div id="informasi-pribadi"
-            class="w-full py-[100px] bg-white shadow-lg border flex flex-col justify-center items-center">
+            class="w-full pt-[100px] pb-[50px] bg-white shadow-lg border flex flex-col justify-center items-center">
             <h1 class="font-bold text-[22px] text-black">Form Donasi Developer(Pembuat)</h1>
             <p class="text-gray-500">Informasi Donatur</p>
             {{-- <form class="w-full" method="post"> --}}
-            @csrf
-            <div class="pt-8 w-full flex flex-col gap-2 text-greyText">
-                <div class="row flex px-[100px] gap-10">
-                    <span class="flex flex-1 flex-col gap-2 mb-5">
-                        <label for="name" class="font-[600] text-[16px]">Nama Lengkap</label>
-                        <input disabled type="text" name="name" id="name"
-                            class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan nama lengkap Anda!"
-                            value="{{ Auth::user()->fullname }}">
-                        @error('name')
+                @csrf
+                <div class="pt-8 w-full flex flex-col gap-2 text-greyText">
+                    <div class="row flex px-[100px] gap-10">
+                        <span class="flex flex-1 flex-col gap-2 mb-5">
+                            <label for="name" class="font-[600] text-[16px]">Nama Lengkap</label>
+                            <input disabled type="text" name="name" id="name"
+                                class="bg-grey border-none px-5 py-3 rounded-md"
+                                placeholder="Masukan nama lengkap Anda!" value="{{ Auth::user()->fullname }}">
+                            @error('name')
                             <p class="text-red">{{ $message }}</p>
-                        @enderror
-                    </span>
-                    <span class="flex flex-1 flex-col gap-2 mb-5">
-                        <label for="no_telp" class="font-[600] text-[16px]">Nomor Telepon</label>
-                        <input type="text" name="no_telp" id="no_telp"
-                            class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan nomor telepon Anda!">
-                        @error('no_telp')
+                            @enderror
+                        </span>
+                        <span class="flex flex-1 flex-col gap-2 mb-5">
+                            <label for="no_telp" class="font-[600] text-[16px]">Nomor Telepon</label>
+                            <input type="text" name="no_telp" id="no_telp"
+                                class="bg-grey border-none px-5 py-3 rounded-md"
+                                placeholder="Masukan nomor telepon Anda!">
+                            @error('no_telp')
                             <p class="text-red">{{ $message }}</p>
-                        @enderror
-                    </span>
-                    <span class="flex flex-1 flex-col gap-2 mb-5">
-                        <label for="address" class="font-[600] text-[16px]">Alamat</label>
-                        <input type="text" name="address" id="address"
-                            class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan alamat Anda!">
-                        @error('address')
+                            @enderror
+                        </span>
+                        <span class="flex flex-1 flex-col gap-2 mb-5">
+                            <label for="address" class="font-[600] text-[16px]">Alamat</label>
+                            <input type="text" name="address" id="address"
+                                class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan alamat Anda!">
+                            @error('address')
                             <p class="text-red">{{ $message }}</p>
-                        @enderror
-                    </span>
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="row flex justify-center px-[100px] gap-10">
+                        <span class="flex w-[370px] flex-col gap-2 mb-5">
+                            <label for="nominal_donation" class="font-[600] text-[16px]">Nominal Donasi</label>
+                            <input type="number" name="nominal_donation" id="nominal_donation"
+                                class="bg-grey border-none px-5 py-3 rounded-md"
+                                placeholder="Masukan nomimal donasi Anda!">
+                            @error('email')
+                            <p class="text-red">{{ $message }}</p>
+                            @enderror
+                        </span>
+                    </div>
                 </div>
-                <div class="row flex justify-center px-[100px] gap-10">
-                    <span class="flex w-[370px] flex-col gap-2 mb-5">
-                        <label for="nominal_donation" class="font-[600] text-[16px]">Nominal Donasi</label>
-                        <input type="number" name="nominal_donation" id="nominal_donation"
-                            class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan nomimal donasi Anda!">
-                        @error('email')
-                            <p class="text-red">{{ $message }}</p>
-                        @enderror
-                    </span>
+                <div class="flex w-full px-[40px] pt-[20px] justify-center">
+                    <button class="bg-blue text-white px-10 py-2 rounded-md" id="bayar">Donasi Sekarang</button>
                 </div>
-                <ul>
-                    <li class="px-3 text-red-700">- Uang akan digunakan untuk membeli hosting dan peralatan yang dibutuhkan tim</li>
-                    <li class="px-3 text-red-700">- Uang akan digunakan untuk membeli hosting dan peralatan yang dibutuhkan tim</li>
-                    <li class="px-3 text-red-700">- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, impedit necessitatibus architecto perferendis hic at dicta maxime quia assumenda </li>
-                </ul>
-            </div>
-            <div class="flex w-full px-[40px] pt-[100px] justify-center">
-                <button class="bg-blue text-white px-10 py-2 rounded-md" id="bayar">Donasi Sekarang</button>
-            </div>
-            {{-- </form> --}}
+                <div class="flex  mt-[50px] p-4 mb-4 text-sm text-blue rounded-lg bg-[#ebf5ff] dark:bg-gray-800 dark:text-blueLight"
+                    role="alert">
+                    <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                        <span class="font-semibold text-[14px]">List Distribusi Donasi Developer :</span>
+                        <ul class="mt-1.5 list-disc list-inside">
+                            <li><span class="font-semibold">Biaya Hosting Tahunan:</span> Membantu kami memastikan
+                                website tetap online dan berjalan dengan
+                                lancar</li>
+                            <li><span class="font-semibold">Biaya Domain Tahunan:</span> Menjamin bahwa alamat website
+                                kami tetap dapat
+                                diakses oleh semua
+                                pengguna.</li>
+                            <li><span class="font-semibold">Keperluan Teknis Lainnya:</span> Mendukung perbaikan,
+                                peningkatan fitur, dan
+                                pengembangan lebih
+                                lanjut.</li>
+                        </ul>
+                    </div>
+                </div>
+                {{--
+            </form> --}}
         </div>
     </section>
     <div id="snap-container"></div>

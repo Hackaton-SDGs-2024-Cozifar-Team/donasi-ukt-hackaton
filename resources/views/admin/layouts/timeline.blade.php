@@ -37,14 +37,13 @@
                             <td>{{ $timeline['deadline'] }}</td>
                             <td>{{ $timeline['description'] }}</td>
                             <td class="d-flex gap-2">            
-                              <form action="/admin/exam/{{ $timeline['id'] }}" method="post">
+                              <form action="/admin/time-line/{{ $timeline['id_timeline'] }}/delete" method="post">
                                 @csrf
-                                @method('delete')
                                 <button type="submit" onclick="return confirm('Apakah yakin untuk menghapus')" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
                               </form>
                               
-                              <a class="btn btn-warning" href="/admin/exam/{{ $timeline['id'] }}/edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
-                              <a class="btn btn-success" href="/admin/exam/" role="button"><i class="fa-solid fa-circle-info"></i></a>
+                              <a class="btn btn-warning" href="/admin/time-line/{{ $timeline['id_timeline'] }}/edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
+                            
                             </td>
                           </tr>
                           @endforeach

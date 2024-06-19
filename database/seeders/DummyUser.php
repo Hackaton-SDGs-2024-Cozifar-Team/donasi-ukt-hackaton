@@ -21,6 +21,8 @@ class DummyUser extends Seeder
                 'email' => 'nico@gmail.com',
                 'password' => bcrypt('nico123'),
                 'no_telp' => '085689543421',
+                'address' => 'Jember',
+                'photo' => 'user1.jpg',
                 'role' => 'admin'
             ],
             [
@@ -30,6 +32,8 @@ class DummyUser extends Seeder
                 'email' => 'bayu@example.com',
                 'password' => bcrypt('12345678'),
                 'no_telp' => '085689543421',
+                'address' => 'Banyuwangi',
+                'photo' => 'user1.jpg',
                 'role' => 'recipient'
             ],
             [
@@ -39,6 +43,8 @@ class DummyUser extends Seeder
                 'email' => 'udin@example.com',
                 'password' => bcrypt('12345678'),
                 'no_telp' => '085676567898',
+                'address' => 'Kediri',
+                'photo' => 'user1.jpg',
                 'role' => 'donatur'
             ],
         ];

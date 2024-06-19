@@ -9,4 +9,5 @@ class timeline extends Model
 {
     use HasFactory;
     protected $guarded = ['id_timeline'];
+    protected $primaryKey = 'id_timeline';
 }

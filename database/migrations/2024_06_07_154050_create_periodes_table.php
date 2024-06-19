@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('periodes', function (Blueprint $table) {
             $table->bigIncrements('id_periode');
             $table->string('school_year', 10);
-            $table->string('status_period', 20);
+            $table->enum('status_period', ['active','non active']);
             $table->timestamps();
         });
     }

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Mahasiswa\DashboardMahasiswaController;
+use App\Http\Controllers\Mahasiswa\StatusMahasiswaController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\RegisterFormController;
 use Illuminate\Support\Facades\Route;
@@ -56,10 +57,14 @@ Route::middleware('auth')->group(function () {
             Route::get('/',[TimelineController::class,'index'])->name('timeline.index');
             Route::get('/create',[TimelineController::class,'create'])->name('timeline.create');
             Route::post('/store',[TimelineController::class,'store'])->name('timeline.store');
+            Route::get('/{id}/edit',[TimelineController::class,'edit'])->name('timeline.edit');
+            Route::post('/{id}/update',[TimelineController::class,'update'])->name('timeline.update');
+            Route::post('/{id}/delete',[TimelineController::class,'destroy'])->name('timeline.delete');
         });
     });
 
     Route::prefix('mahasiswa')->group(function () {
         Route::get('/dashboard',[DashboardMahasiswaController::class,'index'])->name('mahasiswa.index');
+        Route::get('/status',[StatusMahasiswaController::class,'index'])->name('status.index');
     });
 });
