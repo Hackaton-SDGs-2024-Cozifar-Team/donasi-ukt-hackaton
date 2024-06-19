@@ -25,7 +25,7 @@
             <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="proof_father_income" class="font-[600] text-[16px]">Bukti Gaji Ayah/Wali</label>
                 <input type="file" name="proof_father_income" id="proof_father_income"
-                    class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan tanggal lahir Anda!">
+                    class="bg-grey border-none px-5 py-1 rounded-md" placeholder="Masukan tanggal lahir Anda!">
                 @error('email')
                 <p class="text-red">{{ $message }}</p>
                 @enderror
@@ -51,7 +51,7 @@
             <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="proof_mother_income" class="font-[600] text-[16px]">Bukti Gaji Ibu/Wali</label>
                 <input type="file" name="proof_mother_income" id="proof_mother_income"
-                    class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan bukti gaji ibu/wali Anda!">
+                    class="bg-grey border-none px-5 py-1 rounded-md" placeholder="Masukan bukti gaji ibu/wali Anda!">
                 @error('email')
                 <p class="text-red">{{ $message }}</p>
                 @enderror
