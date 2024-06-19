@@ -12,6 +12,7 @@ class RecipientController extends Controller
     public function index()
     {
         $totalDonation = DetailDonation::sum('nominal_donation');
+        $submissionRejected = DonationRegistration::all()->where('status', 'rejected');
         $recipients = DonationRegistration::where('status', 'confirm')->get();
         $recipientCount = $recipients->count();
 
@@ -50,7 +51,8 @@ class RecipientController extends Controller
 
         return view('admin.layouts.recipient', [
             "title" => "Penerima Donasi",
-            "recipients" => $recipients
+            "recipients" => $recipients,
+            "submissionRejected" => $submissionRejected,
         ]);
     }
 }
