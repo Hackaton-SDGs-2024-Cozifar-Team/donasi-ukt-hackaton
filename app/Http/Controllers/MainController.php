@@ -27,15 +27,13 @@ class MainController extends Controller
 
         foreach($donations as $donation){
             foreach($donation->detail_donation as $detail){
-             
+
                 $uangDonasi += $detail->nominal_donation;
             }
         }
 
-        
-        
         $timelines = timeline::all();
-        
+
         $originalDate = $timelines[2]->deadline;
 
         $date = new DateTime($originalDate);
