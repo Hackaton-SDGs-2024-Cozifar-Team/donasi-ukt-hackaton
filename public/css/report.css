@@ -1,0 +1,61 @@
+b93d8d7 :root {
+    --gray: #c7c7c7;
+    --navy: #1b3359;
+    --middleblue: #134ba4;
+    --lightblue: #f3f7fd;
+    --darkblue: #061072;
+    --lightblueclick: #c9d8eb;
+    --green: #1f9254;
+    --blue: #295ef4;
+    --lightgrey: #aeaeae;
+    --brown: #404040;
+}
+
+#pemesanan_top {
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+    padding: 5px 20px;
+    margin-bottom: 30px;
+}
+
+#pemesanan_top h4 {
+    font-size: 18px;
+}
+
+/* #pesanan_masuk.active, #pesanan_terkonfirmasi.active {
+    color: blue;
+} */
+
+#donatur.active, #pesanan_terkonfirmasi.active .line-text {
+    height: 2px; /* Sesuaikan tinggi garis dengan kebutuhan */
+    width: auto;
+    display: block;
+    margin-top: 5px;
+}
+
+#line .line-border {
+    position: absolute;
+    content: "";
+    height: 2px;
+    background-color: #c7c7c7;
+    width: 80.5%;
+    margin-left: -60px;
+    margin-top: 10px;
+}
+
+#donatur.line-border .line-text {
+    height: 2px;
+    background-color: blue;
+    width: auto;
+    display: block;
+    margin-top: 5px;
+}
+
+#pesanan_terkonfirmasi.active .line-text {
+    height: 2px;
+    background-color: blue;
+    width: auto;
+    display: block;
+    margin-top: 5px;
+}
