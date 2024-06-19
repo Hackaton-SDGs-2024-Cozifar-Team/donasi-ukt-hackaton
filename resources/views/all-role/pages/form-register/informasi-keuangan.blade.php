@@ -7,14 +7,6 @@
     <div class="pt-8 w-full flex flex-col gap-2 text-greyText">
         <div class="row flex px-[100px] gap-10">
             <span class="flex flex-1 flex-col gap-2 mb-5">
-                <label for="name" class="font-[600] text-[16px]">Pekerjaan Ayah/wali</label>
-                <input type="text" name="name" id="name" class="bg-grey border-none px-5 py-3 rounded-md"
-                    placeholder="Masukan nama ayah/wali Anda!">
-                @error('name')
-                <p class="text-red">{{ $message }}</p>
-                @enderror
-            </span>
-            <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="father_income" class="font-[600] text-[16px]">Pendapatan Ayah/Wali</label>
                 <input type="number" name="father_income" id="father_income"
                     class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan pendapatan ayah/wali Anda!">
@@ -30,16 +22,6 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
-        </div>
-        <div class="row flex px-[100px] gap-10">
-            <span class="flex flex-1 flex-col gap-2 mb-5">
-                <label for="name" class="font-[600] text-[16px]">Pekerjaan Ibu/wali</label>
-                <input type="text" name="name" id="name" class="bg-grey border-none px-5 py-3 rounded-md"
-                    placeholder="Masukan nama ibu/wali Anda!">
-                @error('name')
-                <p class="text-red">{{ $message }}</p>
-                @enderror
-            </span>
             <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="mother_income" class="font-[600] text-[16px]">Pendapatan Ibu/Wali</label>
                 <input type="number" name="mother_income" id="mother_income"
@@ -47,7 +29,8 @@
                 @error('name')
                 <p class="text-red">{{ $message }}</p>
                 @enderror
-            </span>
+        </div>
+        <div class="row flex px-[100px] gap-10">
             <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="proof_mother_income" class="font-[600] text-[16px]">Bukti Gaji Ibu/Wali</label>
                 <input type="file" name="proof_mother_income" id="proof_mother_income"
@@ -56,8 +39,6 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
-        </div>
-        <div class="row flex justify-center px-[100px] gap-10">
             <span class="flex flex-1 flex-col gap-2 mb-5">
                 <label for="dependents" class="font-[600] text-[16px]">Jumlah Tanggungan</label>
                 <input type="number" name="dependents" id="dependents" class="bg-grey border-none px-5 py-3 rounded-md"
@@ -66,8 +47,9 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
-            <span class="flex flex-1 flex-col gap-2 mb-5"></span>
-            <span class="flex flex-1 flex-col gap-2 mb-5"></span>
+            <span class="flex flex-1 flex-col gap-2 mb-5">
+
+            </span>
         </div>
     </div>
     <div class="flex w-full px-[40px] justify-between mt-auto">

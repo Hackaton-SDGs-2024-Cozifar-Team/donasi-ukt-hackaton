@@ -126,6 +126,7 @@
                 <p class="text-red">{{ $message }}</p>
                 @enderror
             </span>
+
             <span class="flex flex-1 flex-col gap-2 mb-5"></span>
         </div>
     </div>
