@@ -12,7 +12,7 @@ class RecipientController extends Controller
     public function index()
     {
         $totalDonation = DetailDonation::sum('nominal_donation');
-        $recipients = DonationRegistration::where('status', 'Diterima')->get();
+        $recipients = DonationRegistration::where('status', 'confirm')->get();
         $recipientCount = $recipients->count();
 
         $nominalAcceptedDefault = $recipientCount > 0 ? $totalDonation / $recipientCount : 0;

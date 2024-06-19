@@ -53,12 +53,6 @@
                     <div data-i18n="Analytics">Periode</div>
                 </a>
             </li>
-            <li class="menu-item @active('user.*')">
-                <a href="{{ route('user.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fa-solid fa-users"></i>
-                    <div data-i18n="Analytics">User</div>
-                </a>
-            </li>
 
             <li class="menu-item @active('report.*')">
                 <a href="{{ route('report.index') }}" class="menu-link">

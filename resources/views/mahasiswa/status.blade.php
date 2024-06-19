@@ -9,7 +9,7 @@
                 </p>
             </div>
         </div> --}}
-        @if ($data->status == "Diterima")
+        @if ($data->status == "confirm")
         <div class="card mb-4">
             <div class="card-body">
                 <h3 class="card-title">Selamat Anda Lolos Seleksi Penerimaan</h3>
@@ -34,7 +34,7 @@
         </div>
         @endif
      
-        @if ($data->status == "Ditolak")
+        @if ($data->status == "rejected")
         <div class="card mb-4">
             <div class="card-body">
                 <h3 class="card-title">Maaf Anda Belum Lolos </h3>

@@ -15,7 +15,6 @@ class StatusMahasiswaController extends Controller
 
         $student = student::where("id_user",Auth::user()->id)->first();
         $data = DonationRegistration::where("student_id",$student->id_student)->first(); 
-
         return view("mahasiswa.status",[
             "title"=> "Status",
             "data"=> $data
