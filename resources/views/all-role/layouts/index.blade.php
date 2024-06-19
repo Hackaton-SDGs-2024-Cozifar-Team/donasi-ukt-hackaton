@@ -109,13 +109,14 @@
     </section>
     {{-- pengumuman section --}}
     <section class="bg-gradient-to-r from-[#125C9D] to-[#4F129D]">
+        <input type="hidden" value="{{ $tanggal_pengumuman }}" id="tanggal_pengumuman">
         <div class="flex">
             <div class="w-1/2">
                 <h2 class="font-bold text-white text-[32px]">Pengumuman Final</h2>
                 <h4 class="max-w-[700px] text-white font-thin text-[20px]">Pengumuman Finalis Penerima Donasi UKT 2024
                     Akan
                     dilaksanakan
-                    umumkan pada tanggal 10 Juli 2024</h4>
+                    umumkan pada tanggal {{ $tanggal_pengumuman }}</h4>
                 <div class="flex justify-start mt-4 gap-8">
                     <div class="flex flex-col items-center justify-center gap-2">
                         <p id="days"
@@ -165,38 +166,18 @@
                     <td class="border border-gray-300 py-3">Progam Studi</td>
                 </tr>
             </thead>
+            {{-- @dd(now()) --}}
             <tbody class="text-center">
-                @if ($donation_registrations->count() > 0)
-                    <tr class="senin">
-                        <td class="border border-gray-300 py-3">1</td>
-                        <td class="border border-gray-300 py-3">Nico Flassy</td>
-                        <td class="border border-gray-300 py-3">Teknologi Informasi</td>
-                        <td class="border border-gray-300 py-3">Teknik Informatika</td>
-                    </tr>
-                    <tr class="senin">
-                        <td class="border border-gray-300 py-3">1</td>
-                        <td class="border border-gray-300 py-3">Nico Flassy</td>
-                        <td class="border border-gray-300 py-3">Teknologi Informasi</td>
-                        <td class="border border-gray-300 py-3">Teknik Informatika</td>
-                    </tr>
-                    <tr class="senin">
-                        <td class="border border-gray-300 py-3">1</td>
-                        <td class="border border-gray-300 py-3">Nico Flassy</td>
-                        <td class="border border-gray-300 py-3">Teknologi Informasi</td>
-                        <td class="border border-gray-300 py-3">Teknik Informatika</td>
-                    </tr>
-                    <tr class="senin">
-                        <td class="border border-gray-300 py-3">1</td>
-                        <td class="border border-gray-300 py-3">Nico Flassy</td>
-                        <td class="border border-gray-300 py-3">Teknologi Informasi</td>
-                        <td class="border border-gray-300 py-3">Teknik Informatika</td>
-                    </tr>
-                    <tr class="senin">
-                        <td class="border border-gray-300 py-3">1</td>
-                        <td class="border border-gray-300 py-3">Nico Flassy</td>
-                        <td class="border border-gray-300 py-3">Teknologi Informasi</td>
-                        <td class="border border-gray-300 py-3">Teknik Informatika</td>
-                    </tr>
+                @dd(now())
+                @if ($tanggal_pengumuman > now())
+                    @foreach ($dataDiterima as $item)
+                        <tr class="senin">
+                            <td class="border border-gray-300 py-3">{{ $loop->iteration }}</td>
+                            <td class="border border-gray-300 py-3">{{ $item->student->users->fullname }}</td>
+                            <td class="border border-gray-300 py-3">{{ $item->student->academic_information->faculty }}</td>
+                            <td class="border border-gray-300 py-3">{{ $item->student->academic_information->study_program }}</td>
+                        </tr>
+                    @endforeach
                 @else
                     <tr class="senin">
                         <td class="border border-gray-300 py-[50px]" colspan="4">
@@ -209,8 +190,7 @@
                                 </svg>
                                 <span class="sr-only">Info</span>
                                 <div>
-                                    <span class="font-medium">Penerima donasi UKT akan di tampilkan tanggal 10 Juli
-                                        2024</span>
+                                    <span class="font-medium">Penerima donasi UKT akan di tampilkan tanggal {{ $tanggal_pengumuman }}</span>
                                 </div>
                             </div>
                         </td>

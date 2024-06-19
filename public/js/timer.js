@@ -1,5 +1,6 @@
 
-        const countDownDate = new Date("Jun 19, 2024 20:00:00").getTime();
+        var tanggal_pengumuman = document.getElementById("tanggal_pengumuman").value;
+        const countDownDate = new Date(tanggal_pengumuman).getTime();
 
         const x = setInterval(function() {
             const now = new Date().getTime();

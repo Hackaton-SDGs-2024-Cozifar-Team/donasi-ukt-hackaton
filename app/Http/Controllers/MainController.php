@@ -6,6 +6,7 @@ use App\Models\Donation;
 use App\Models\DonationRegistration;
 use App\Models\student;
 use App\Models\timeline;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +23,7 @@ class MainController extends Controller
         $pengajuan = DonationRegistration::all()->count();
         $donations = Donation::where("status","paid")->get();
         $uangDonasi = 0;
+        $dataDiterima = DonationRegistration::where("status","confirm")->get();
 
         foreach($donations as $donation){
             foreach($donation->detail_donation as $detail){
@@ -30,7 +32,15 @@ class MainController extends Controller
             }
         }
 
+        
+        
         $timelines = timeline::all();
+        
+        $originalDate = $timelines[2]->deadline;
+
+        $date = new DateTime($originalDate);
+
+        $tanggal_pengumuman = $date->format('M d, Y 00:34:00');
         $donation_regist = DB::table('donation_registrations')
                                 ->join('periodes', 'donation_registrations.id_periode', '=', 'periodes.id_periode')
                                 ->where('donation_registrations.status', 'confirm')
@@ -44,6 +54,8 @@ class MainController extends Controller
             'donatur'=> $donatur,
             'uangDonasi'=> $uangDonasi,
             'pengajuan'=> $pengajuan,
+            'dataDiterima'=> $dataDiterima,
+            'tanggal_pengumuman'=> $tanggal_pengumuman,
         ]);
     }
 }
