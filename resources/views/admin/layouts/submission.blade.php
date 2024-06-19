@@ -39,6 +39,13 @@
                                             <i class='bx bx-check'></i>
                                         </button>
                                     </form>
+                                    <form action="{{ route('submission.updateStatusRejected', ['id_donation_registration' => $data->id_donation_registration]) }}" method="post">
+                                        @csrf
+                                        @method('put')
+                                        <button type="submit" class="btn btn-icon btn-outline-danger">
+                                            <i class='rounded fa-solid fa-xmark'></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
