@@ -132,8 +132,8 @@
                             @enderror
                         </span>
                         <span class="flex flex-1 flex-col gap-2 mb-5">
-                            <label for="no_telp" class="font-[600] text-[16px]">Nomor Telepon</label>
-                            <input type="text" name="no_telp" id="no_telp"
+                            <label for="no_telp_perusahaan" class="font-[600] text-[16px]">Nomor Telepon</label>
+                            <input type="text" name="no_telp_perusahaan" id="no_telp_perusahaan"
                                 class="bg-grey border-none px-5 py-3 rounded-md"
                                 placeholder="Masukan nomor telepon Anda!">
                             @error('no_telp')
@@ -141,8 +141,8 @@
                             @enderror
                         </span>
                         <span class="flex flex-1 flex-col gap-2 mb-5">
-                            <label for="address" class="font-[600] text-[16px]">Alamat</label>
-                            <input type="text" name="address" id="address"
+                            <label for="address_perusahaan" class="font-[600] text-[16px]">Alamat</label>
+                            <input type="text" name="address_perusahaan" id="address_perusahaan"
                                 class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan alamat Anda!">
                             @error('address')
                             <p class="text-red">{{ $message }}</p>
@@ -151,8 +151,9 @@
                     </div>
                     <div class="row flex justify-center px-[100px] gap-10">
                         <span class="flex w-[370px] flex-col gap-2 mb-5">
-                            <label for="nominal_donation" class="font-[600] text-[16px]">Nominal Donasi</label>
-                            <input type="number" name="nominal_donation" id="nominal_donation"
+                            <label for="nominal_donation_perusahaan" class="font-[600] text-[16px]">Nominal
+                                Donasi</label>
+                            <input type="number" name="nominal_donation_perusahaan" id="nominal_donation_perusahaan"
                                 class="bg-grey border-none px-5 py-3 rounded-md"
                                 placeholder="Masukan nomimal donasi Anda!">
                             @error('email')
@@ -162,7 +163,8 @@
                     </div>
                 </div>
                 <div class="flex w-full px-[40px] pt-[100px] justify-center">
-                    <button class="bg-blue text-white px-10 py-2 rounded-md" id="bayar">Donasi Sekarang</button>
+                    <button class="bg-blue text-white px-10 py-2 rounded-md" id="bayar-perusahaan">Donasi
+                        Sekarang</button>
                 </div>
                 {{--
             </form> --}}
@@ -180,18 +182,141 @@
     </script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
+            $('#bayar').click(function() {
+                // Buat array kosong untuk menyimpan nilai-nilai
+                var price = $("#nominal_donation").val();
+                var no_telp = $("#no_telp").val();
+                var address = $("#address").val();
+                var id = {{ Auth::user()->id }};
+
+                const data = {
+                    price: price,
+                    user_id: id,
+                    no_telp: no_telp,
+                    address: address,
+                    type: "ukt"
+                };
+                var token = "";
+
+                $.ajax({
+                    url: "/api/getToken",
+                    method: "post",
+                    data: data,
+                    success(res) {
+                        console.log(res);
+                        token = res.token;
+                        window.snap.pay(token, {
+                            onSuccess: function(result) {
+                                /* You may add your own implementation here */
+                                $.ajax({
+                                    url: "/api/callback",
+                                    method: "post",
+                                    data: result,
+                                    success(res) {
+                                        console.log(res);
+                                        window.location.assign("http://127.0.0.1:8000/");
+                                    },
+                                    error(err) {
+                                        console.log(err);
+                                    }
+                                });
+                            },
+                            onPending: function(result) {
+                                /* You may add your own implementation here */
+                                alert("waiting for your payment!");
+                                console.log(result);
+                            },
+                            onError: function(result) {
+                                /* You may add your own implementation here */
+                                alert("payment failed!");
+                                console.log(result);
+                            },
+                            onClose: function() {
+                                /* You may add your own implementation here */
+                                alert('you closed the popup without finishing the payment');
+                            }
+                        });
+                    },
+                    error(err) {
+                        console.log(err);
+                    }
+                });
+            });
+            $('#bayar-perusahaan').click(function() {
+                // Buat array kosong untuk menyimpan nilai-nilai
+                var price = $("#nominal_donation_perusahaan").val();
+                var no_telp = $("#no_telp_perusahaan").val();
+                var address = $("#address_perusahaan").val();
+                var id = {{ Auth::user()->id }};
+
+                const data = {
+                    price: price,
+                    user_id: id,
+                    no_telp: no_telp,
+                    address: address,
+                    type: "ukt"
+                };
+                var token = "";
+
+                $.ajax({
+                    url: "/api/getToken",
+                    method: "post",
+                    data: data,
+                    success(res) {
+                        console.log(res);
+                        token = res.token;
+                        window.snap.pay(token, {
+                            onSuccess: function(result) {
+                                /* You may add your own implementation here */
+                                $.ajax({
+                                    url: "/api/callback",
+                                    method: "post",
+                                    data: result,
+                                    success(res) {
+                                        console.log(res);
+                                        window.location.assign("http://127.0.0.1:8000/");
+                                    },
+                                    error(err) {
+                                        console.log(err);
+                                    }
+                                });
+                            },
+                            onPending: function(result) {
+                                /* You may add your own implementation here */
+                                alert("waiting for your payment!");
+                                console.log(result);
+                            },
+                            onError: function(result) {
+                                /* You may add your own implementation here */
+                                alert("payment failed!");
+                                console.log(result);
+                            },
+                            onClose: function() {
+                                /* You may add your own implementation here */
+                                alert('you closed the popup without finishing the payment');
+                            }
+                        });
+                    },
+                    error(err) {
+                        console.log(err);
+                    }
+                });
+            });
+
             $('#donatur-perusahaan').hide();
+
             $('#tab_donatur').click(function() {
                 $('#donatur-perusahaan').hide();
                 $('#donatur-umum').show();
-            })
+            });
 
             $('#tab_donatur_perusahaan').click(function() {
                 $('#donatur-perusahaan').show();
                 $('#donatur-umum').hide();
-            })
+            });
         });
     </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 

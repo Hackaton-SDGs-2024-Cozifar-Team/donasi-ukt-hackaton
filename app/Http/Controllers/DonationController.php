@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DetailDonation;
 use App\Models\Donation;
+use App\Models\DonationDeveloper;
 use App\Models\Periode;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class DonationController extends Controller
     public function index(){
         return view('all-role.layouts.donation');
     }
-    
+
     public function donationDev()
     {
         return view('all-role.layouts.donation-developer');
@@ -22,23 +23,29 @@ class DonationController extends Controller
     public function getToken(Request $request){
 
         $rand_id = "ORD".time().rand(1,9);
-        
+
         $donation = Donation::create([
             "id_donation"=> $rand_id,
             "id_user"=> $request->user_id,
             "status"=> "unpaid",
         ]);
         $periode = Periode::where("status_period","=","active")->first();
+
+        $regis_price = $request->price - ($request->price * 2 / 100);
+        $developer_price = $request->price * 2 / 100;
         $detail_donation = DetailDonation::create([
             "id_donation"=> $donation->id_donation,
             "id_periode"=> $periode->id_periode,
             "type_donation"=> $request->type,
             "donation_date"=> now(),
-            "nominal_donation"=> $request->price,
+            "nominal_donation"=> $regis_price,
             "payment_methode"=> "-",
         ]);
 
-
+        $donation_developer =  DonationDeveloper::create([
+            'nominal_donation' => $developer_price,
+            'id_donation' =>  $donation->id_donation
+        ]);
 
         // return response()->json(['token'=> $request->id]);
         // Set your Merchant Server Key
@@ -58,6 +65,7 @@ class DonationController extends Controller
         }elseif($request->type == "developer"){
             $name_donation = "Donasi Developer";
         }
+
         $params = array(
             'transaction_details' => array(
                 'order_id' => "$donation->id_donation",
@@ -79,15 +87,15 @@ class DonationController extends Controller
                 'address'=> $request->address,
             ),
         );
-             
+
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         return response()->json(['token'=> $snapToken]);
     }
 
     public function callback(Request $request){
 
-                
-       
+
+
                 $donation = Donation::where("id_donation",$request->order_id)->firstOrFail();
                 $donation->status = 'paid';
                 $donation->save();
