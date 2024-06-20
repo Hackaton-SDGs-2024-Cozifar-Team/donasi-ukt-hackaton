@@ -16,30 +16,32 @@
                         <tr>
                             <th>NIM</th>
                             <th>Nama Mahasiswa</th>
-                            <th>Jurusan</th>
-                            <th>Prodi</th>
+                            <th>Universitas</th>
+                            <th>Fakultas</th>
+                            <th>prioritas</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($submision_list as $data)
                             <tr>
-                                <td>{{ $data->student->academic_information->nim }}</td>
-                                <td>{{ $data->student->users->fullname }}</td>
-                                <td>{{ $data->student->academic_information->faculty }}</td>
-                                <td>{{ $data->student->academic_information->study_program }}</td>
+                                <td>{{ $data['nim'] }}</td>
+                                <td>{{ $data['name'] }}</td>
+                                <td>{{ $data['university'] }}</td>
+                                <td>{{ $data['faculty'] }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td class="d-flex gap-2">
-                                    <a href="{{ route('submission.detail', ['id_user' => $data->student->id_user]) }}" class="btn btn-icon btn-outline-secondary">
+                                    <a href="{{ route('submission.detail', ['id_user' => $data['id_user']]) }}" class="btn btn-icon btn-outline-secondary">
                                         <i class="bx bx-info-circle"></i>
                                     </a>
-                                    <form action="{{ route('submission.updateStatus', ['id_donation_registration' => $data->id_donation_registration]) }}" method="post">
+                                    <form action="{{ route('submission.updateStatus', ['id_donation_registration' => $data['id_donation_registration']]) }}" method="post">
                                         @csrf
                                         @method('put')
                                         <button type="submit" class="btn btn-icon btn-outline-success">
                                             <i class='bx bx-check'></i>
                                         </button>
                                     </form>
-                                    <form action="{{ route('submission.updateStatusRejected', ['id_donation_registration' => $data->id_donation_registration]) }}" method="post">
+                                    <form action="{{ route('submission.updateStatusRejected', ['id_donation_registration' => $data['id_donation_registration']]) }}" method="post">
                                         @csrf
                                         @method('put')
                                         <button type="submit" class="btn btn-icon btn-outline-danger">

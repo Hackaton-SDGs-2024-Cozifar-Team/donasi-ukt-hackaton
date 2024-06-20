@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class student extends Model
@@ -35,5 +36,10 @@ class student extends Model
     public function financial_information() : HasOne
     {
         return $this->hasOne(FinancialInformation::class,"id_financial_information","id_financial_information");
+    }
+
+    public function donation_registration() : BelongsTo
+    {
+        return $this->belongsTo(DonationRegistration::class,"id_student","student_id");
     }
 }

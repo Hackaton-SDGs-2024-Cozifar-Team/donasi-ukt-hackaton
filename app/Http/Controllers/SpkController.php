@@ -1,28 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\DonationRegistration;
-use App\Models\Periode;
+use App\Models\FinancialInformation;
 use App\Models\student;
 use Illuminate\Http\Request;
 
-class SubmissionController extends Controller
+class SpkController extends Controller
 {
     public function index()
     {
-
         $student = student::all();
         $nama = [];
-        $id_donation_registration = [];
-
         $penghasilan = [];
         $jumlah_tanggunan = [];
-        $fakultas = [];
-        $universitas = [];
-        $nim = [];
-        $id_user = [];
         foreach ($student as $key => $value) {
             $hasil = $value->financial_information->father_income + $value->financial_information->mother_income;
             array_push($penghasilan, $hasil);
@@ -32,23 +23,9 @@ class SubmissionController extends Controller
 
             $fullname = $value->users->fullname;
             array_push($nama, $fullname);
-
-            $id_donation = $value->donation_registration->id_donation_registration;
-            array_push($id_donation_registration, $id_donation);
-
-            $fk = $value->academic_information->faculty;
-            array_push($fakultas, $fk);
-
-            $univ =  $value->academic_information->university ;
-            array_push($universitas, $univ);
-
-            $n =  $value->academic_information->nim ;
-            array_push($nim, $n);
-
-            $ids =  $value->id_user ;
-            array_push($id_user, $ids);
         }
-
+        // dd($nama);
+        // dd($jumlah_tanggunan);
         $data = [
             [
                 "id"=> "C1",
@@ -197,11 +174,9 @@ class SubmissionController extends Controller
         foreach( $result_penghasilan as $key => $value){
             array_push($resultFinal, [
                 'name'=> $nama[$key],
-                'university'=> $universitas[$key],
-                'id_donation_registration'=> $id_donation_registration[$key],
-                'faculty'=> $fakultas[$key],
-                'nim'=> $nim[$key],
-                'id_user'=> $id_user[$key],
+                'penghasilan'=> $value,
+                'tanggungan'=> $result_tanggungan[$key],
+                'jumlah' => $value + $result_tanggungan[$key],
             ]);
         }
         $collectResult = collect($resultFinal);
@@ -210,39 +185,14 @@ class SubmissionController extends Controller
         });
         $sortedArray = $final->values()->all();
 
-        $periode = Periode::where("status_period","=","active")->first();
-        $submision_list = DonationRegistration::where('status', 'process')
-        ->where("id_periode",$periode->id_periode)->get();
-
-        return view("admin.layouts.submission", [
-            "title" => "Pengajuan",
-            "submision_list" => $sortedArray
+        return view("admin.layouts.spk",[
+            "title"=> "spk",
+            "data"=> $resultData,
+            "ubahData"=> $resultUbahData,
+            'tanggungan_terbesar'=> $tanggunganTerbesar,
+            'penghasilan_terkecil'=> $penghasilanTerkecil,
+            'normalisasiData'=> $resultNormalisasiData,
+            'resultFinal'=> $sortedArray,
         ]);
-    }
-
-    public function detailSubmission($id_user)
-    {
-        $submission = Student::all()->where('id_user', $id_user)->firstOrFail();
-
-        return view("admin.layouts.detail_submissions", [
-            "title" => "Detail Pengajuan",
-            "submission" => $submission
-        ]);
-    }
-
-    public function updateStatus($id)
-    {
-        $submission = DonationRegistration::where('id_donation_registration', $id)->firstOrFail();
-        $submission->status = "confirm";
-        $submission->save();
-        return redirect()->route('submission.index');
-    }
-
-    public function updateStatusRejected($id)
-    {
-        $submission = DonationRegistration::where('id_donation_registration', $id)->firstOrFail();
-        $submission->status = "rejected";
-        $submission->save();
-        return redirect()->route('submission.index');
     }
 }
