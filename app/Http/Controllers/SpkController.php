@@ -91,27 +91,37 @@ class SpkController extends Controller
             [
                 "id"=> "C3",
                 "name"=> "UKT",
-                "bobot"=> "0.25",
+                "bobot"=> 0.25,
                 "atribut"=> "benefit",
                 "detail"=> [
                     [
-                        "kelompok"=> "500000",
+                        "kelompok"=> [
+                            "0","500000"
+                        ],
                         "nilai"=> "1",
                     ],
                     [
-                        "kelompok"=> "1000000",
+                        "kelompok"=> [
+                            "500001","1000000"
+                        ],
                         "nilai"=> "3",
                     ],
                     [
-                        "kelompok"=> "2000000",
+                        "kelompok"=> [
+                            "1000001","2000000"
+                        ],
                         "nilai"=> "5",
                     ],
                     [
-                        "kelompok"=> "3000000",
+                        "kelompok"=> [
+                            "2000001","3000000"
+                        ],
                         "nilai"=> "7",
                     ],
                     [
-                        "kelompok"=> "4000000",
+                        "kelompok"=> [
+                            "3000001","4000000"
+                        ],
                         "nilai"=> "9",
                     ]
                 ],
@@ -152,18 +162,11 @@ class SpkController extends Controller
             }
             if($key == 2){
                 foreach($ukt as $hasil){
-                    foreach($value['detail'] as $key => $detail){
-
-                        if($key == (count($value['detail']) - 1)){
-                            if($hasil >= $detail['kelompok'] ){
-                                array_push( $ubahUkt, $detail['nilai']);
-                                break;
-                            }
-                        }else{
-                            if($hasil <= $detail['kelompok'] ){
-                                array_push( $ubahUkt, $detail['nilai']);
-                                break;
-                            }
+                    
+                    foreach($value['detail'] as $k => $detail){
+                        if($hasil >= $detail['kelompok'][0] && $hasil <= $detail['kelompok'][1]){
+                            array_push( $ubahUkt, $detail['nilai']);
+                            break;
                         }
                     }
                 }
@@ -171,6 +174,7 @@ class SpkController extends Controller
             // dd($ubahUkt);
         }
    
+        // dd($ubahUkt);
         $penghasilanTerkecil = min($ubahPenghasilan);
         $tanggunganTerbesar = max($ubahTanggungan);
         $uktTerbesar = max($ubahUkt);
@@ -213,6 +217,8 @@ class SpkController extends Controller
             array_push($normalisasiUkt, $hasil_normalisasi_ukt);
         }
 
+// dd($normalisasiUkt);
+
         foreach($normalisasiPenghasilan as $key => $value){
             array_push($resultNormalisasiData, [
                 'name'=> $nama[$key],
@@ -233,23 +239,23 @@ class SpkController extends Controller
 
             $result_akhir_tanggungan = $normalisasiTanggungan[$key] * $data[1]['bobot'];
             array_push($result_tanggungan, $result_akhir_tanggungan);
-
             $result_akhir_ukt = $normalisasiUkt[$key] * $data[2]['bobot'];
+            // dd($result_akhir_ukt);
             array_push($result_ukt, $result_akhir_ukt);
 
             $jumlah_bobot = $result_akhir_penghasilan + $result_akhir_tanggungan + $result_akhir_ukt;
             array_push($hasil_bobot, $jumlah_bobot);
+            // dd($jumlah_bobot);
         }
 
-        // dd($hasil_bobot[1]);
     
         foreach( $result_penghasilan as $key => $value){
             array_push($resultFinal, [
                 'name'=> $nama[$key],
                 'penghasilan'=> $value,
                 'tanggungan'=> $result_tanggungan[$key],
-                'jumlah' => $value + $result_tanggungan[$key],
-                'ukt'=> $value + $result_ukt[$key]
+                'jumlah' => $value + $result_tanggungan[$key]+ $result_ukt[$key],
+                'ukt'=> $result_ukt[$key]
             ]);
         }
         $collectResult = collect($resultFinal);
