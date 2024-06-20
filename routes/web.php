@@ -35,7 +35,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/authenticate',[LoginController::class,'authenticate']);
 
 Route::middleware('auth')->group(function () {
-    
+
     Route::get('/form-donasi',[DonationController::class,'index']);
     Route::get('/form-donasi-developer',[DonationController::class,'donationDev']);
     Route::post('/add-recipient',[RegisterFormController::class,'addRecipient']);
@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
             Route::post('periode', [PeriodController::class, 'store'])->name('periode.store');
             Route::get('/user',[UserController::class,'index'])->name('user.index');
             Route::get('/report',[ReportController::class,'index'])->name('report.index');
-    
+
             Route::prefix('time-line')->group(function () {
                 Route::get('/',[TimelineController::class,'index'])->name('timeline.index');
                 Route::get('/create',[TimelineController::class,'create'])->name('timeline.create');
@@ -66,8 +66,8 @@ Route::middleware('auth')->group(function () {
         });
     });
 
+    Route::get('/form-register',[RegisterFormController::class,'index']);
     Route::middleware('role:recipient')->group(function () {
-        Route::get('/form-register',[RegisterFormController::class,'index']);
         Route::prefix('mahasiswa')->group(function () {
             Route::get('/dashboard',[DashboardMahasiswaController::class,'index'])->name('mahasiswa.index');
             Route::post('/update-academic/{id}',[DashboardMahasiswaController::class,'updateAcademic'])->name('mahasiswa.update-academic');

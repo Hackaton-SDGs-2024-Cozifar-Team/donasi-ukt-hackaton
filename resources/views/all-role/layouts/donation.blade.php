@@ -46,55 +46,126 @@
                 </li>
             </ol>
         </nav>
-        <div id="informasi-pribadi"
+        <div
+            class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+            <ul class="flex flex-wrap -mb-px">
+                <li class="me-2 cursor-pointer" id="tab_donatur">
+                    <a
+                        class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Donatur
+                        Umum</a>
+                </li>
+                <li class="me-2 cursor-pointer" id="tab_donatur_perusahaan">
+                    <a class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500"
+                        aria-current="page">Donatur Perusahaan</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="donatur-umum"
             class="w-full py-[100px] bg-white shadow-lg border flex flex-col justify-center items-center">
             <h1 class="font-bold text-[22px] text-black">Form Donasi UKT</h1>
             <p class="text-gray-500">Informasi Donatur</p>
             {{-- <form class="w-full" method="post"> --}}
-            @csrf
-            <div class="pt-8 w-full flex flex-col gap-2 text-greyText">
-                <div class="row flex px-[100px] gap-10">
-                    <span class="flex flex-1 flex-col gap-2 mb-5">
-                        <label for="name" class="font-[600] text-[16px]">Nama Lengkap</label>
-                        <input disabled type="text" name="name" id="name"
-                            class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan nama lengkap Anda!"
-                            value="{{ Auth::user()->fullname }}">
-                        @error('name')
+                @csrf
+                <div class="pt-8 w-full flex flex-col gap-2 text-greyText">
+                    <div class="row flex px-[100px] gap-10">
+                        <span class="flex flex-1 flex-col gap-2 mb-5">
+                            <label for="name" class="font-[600] text-[16px]">Nama Lengkap</label>
+                            <input disabled type="text" name="name" id="name"
+                                class="bg-grey border-none px-5 py-3 rounded-md"
+                                placeholder="Masukan nama lengkap Anda!" value="{{ Auth::user()->fullname }}">
+                            @error('name')
                             <p class="text-red">{{ $message }}</p>
-                        @enderror
-                    </span>
-                    <span class="flex flex-1 flex-col gap-2 mb-5">
-                        <label for="no_telp" class="font-[600] text-[16px]">Nomor Telepon</label>
-                        <input type="text" name="no_telp" id="no_telp"
-                            class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan nomor telepon Anda!">
-                        @error('no_telp')
+                            @enderror
+                        </span>
+                        <span class="flex flex-1 flex-col gap-2 mb-5">
+                            <label for="no_telp" class="font-[600] text-[16px]">Nomor Telepon</label>
+                            <input type="text" name="no_telp" id="no_telp"
+                                class="bg-grey border-none px-5 py-3 rounded-md"
+                                placeholder="Masukan nomor telepon Anda!">
+                            @error('no_telp')
                             <p class="text-red">{{ $message }}</p>
-                        @enderror
-                    </span>
-                    <span class="flex flex-1 flex-col gap-2 mb-5">
-                        <label for="address" class="font-[600] text-[16px]">Alamat</label>
-                        <input type="text" name="address" id="address"
-                            class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan alamat Anda!">
-                        @error('address')
+                            @enderror
+                        </span>
+                        <span class="flex flex-1 flex-col gap-2 mb-5">
+                            <label for="address" class="font-[600] text-[16px]">Alamat</label>
+                            <input type="text" name="address" id="address"
+                                class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan alamat Anda!">
+                            @error('address')
                             <p class="text-red">{{ $message }}</p>
-                        @enderror
-                    </span>
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="row flex justify-center px-[100px] gap-10">
+                        <span class="flex w-[370px] flex-col gap-2 mb-5">
+                            <label for="nominal_donation" class="font-[600] text-[16px]">Nominal Donasi</label>
+                            <input type="number" name="nominal_donation" id="nominal_donation"
+                                class="bg-grey border-none px-5 py-3 rounded-md"
+                                placeholder="Masukan nomimal donasi Anda!">
+                            @error('email')
+                            <p class="text-red">{{ $message }}</p>
+                            @enderror
+                        </span>
+                    </div>
                 </div>
-                <div class="row flex justify-center px-[100px] gap-10">
-                    <span class="flex w-[370px] flex-col gap-2 mb-5">
-                        <label for="nominal_donation" class="font-[600] text-[16px]">Nominal Donasi</label>
-                        <input type="number" name="nominal_donation" id="nominal_donation"
-                            class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan nomimal donasi Anda!">
-                        @error('email')
-                            <p class="text-red">{{ $message }}</p>
-                        @enderror
-                    </span>
+                <div class="flex w-full px-[40px] pt-[100px] justify-center">
+                    <button class="bg-blue text-white px-10 py-2 rounded-md" id="bayar">Donasi Sekarang</button>
                 </div>
-            </div>
-            <div class="flex w-full px-[40px] pt-[100px] justify-center">
-                <button class="bg-blue text-white px-10 py-2 rounded-md" id="bayar">Donasi Sekarang</button>
-            </div>
-            {{-- </form> --}}
+                {{--
+            </form> --}}
+        </div>
+        <div id="donatur-perusahaan"
+            class="w-full py-[100px] bg-white shadow-lg border flex flex-col justify-center items-center">
+            <h1 class="font-bold text-[22px] text-black">Form Donasi UKT Perusahaan</h1>
+            <p class="text-gray-500">Informasi Donatur</p>
+            {{-- <form class="w-full" method="post"> --}}
+                @csrf
+                <div class="pt-8 w-full flex flex-col gap-2 text-greyText">
+                    <div class="row flex px-[100px] gap-10">
+                        <span class="flex flex-1 flex-col gap-2 mb-5">
+                            <label for="name" class="font-[600] text-[16px]">Nama Lengkap</label>
+                            <input disabled type="text" name="name" id="name"
+                                class="bg-grey border-none px-5 py-3 rounded-md"
+                                placeholder="Masukan nama lengkap Anda!" value="{{ Auth::user()->fullname }}">
+                            @error('name')
+                            <p class="text-red">{{ $message }}</p>
+                            @enderror
+                        </span>
+                        <span class="flex flex-1 flex-col gap-2 mb-5">
+                            <label for="no_telp" class="font-[600] text-[16px]">Nomor Telepon</label>
+                            <input type="text" name="no_telp" id="no_telp"
+                                class="bg-grey border-none px-5 py-3 rounded-md"
+                                placeholder="Masukan nomor telepon Anda!">
+                            @error('no_telp')
+                            <p class="text-red">{{ $message }}</p>
+                            @enderror
+                        </span>
+                        <span class="flex flex-1 flex-col gap-2 mb-5">
+                            <label for="address" class="font-[600] text-[16px]">Alamat</label>
+                            <input type="text" name="address" id="address"
+                                class="bg-grey border-none px-5 py-3 rounded-md" placeholder="Masukan alamat Anda!">
+                            @error('address')
+                            <p class="text-red">{{ $message }}</p>
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="row flex justify-center px-[100px] gap-10">
+                        <span class="flex w-[370px] flex-col gap-2 mb-5">
+                            <label for="nominal_donation" class="font-[600] text-[16px]">Nominal Donasi</label>
+                            <input type="number" name="nominal_donation" id="nominal_donation"
+                                class="bg-grey border-none px-5 py-3 rounded-md"
+                                placeholder="Masukan nomimal donasi Anda!">
+                            @error('email')
+                            <p class="text-red">{{ $message }}</p>
+                            @enderror
+                        </span>
+                    </div>
+                </div>
+                <div class="flex w-full px-[40px] pt-[100px] justify-center">
+                    <button class="bg-blue text-white px-10 py-2 rounded-md" id="bayar">Donasi Sekarang</button>
+                </div>
+                {{--
+            </form> --}}
         </div>
     </section>
     <div id="snap-container"></div>
@@ -109,69 +180,15 @@
     </script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#bayar').click(function() {
-                // Buat array kosong untuk menyimpan nilai-nilai
-                var price = $("#nominal_donation").val();
-                var no_telp = $("#no_telp").val();
-                var address = $("#address").val();
-                // alert(price)
-                var id = {{ Auth::user()->id }};
+            $('#donatur-perusahaan').hide();
+            $('#tab_donatur').click(function() {
+                $('#donatur-perusahaan').hide();
+                $('#donatur-umum').show();
+            })
 
-                const data = {
-                    price: price,
-                    user_id: id,
-                    no_telp: no_telp,
-                    address: address,
-                    type: "ukt"
-                }
-                var token = "";
-                $.ajax({
-                    url: "/api/getToken",
-                    method: "post",
-                    data: data,
-                    success(res) {
-                        console.log(res)
-                        token = res.token;
-                        window.snap.pay(token, {
-                            onSuccess: function(result) {
-                                /* You may add your own implementation here */
-                                $.ajax({
-                                    url: "/api/callback",
-                                    method: "post",
-                                    data: result,
-                                    success(res) {
-                                        console.log(res);
-                                        window.location.assign("http://127.0.0.1:8000/")
-                                    },
-                                    error(err) {
-                                        console.log(err);
-                                    }
-                                })
-                            },
-
-                            onPending: function(result) {
-                                /* You may add your own implementation here */
-                                alert("wating your payment!");
-                                console.log(result);
-                            },
-                            onError: function(result) {
-                                /* You may add your own implementation here */
-                                alert("payment failed!");
-                                console.log(result);
-                            },
-                            onClose: function() {
-                                /* You may add your own implementation here */
-                                alert(
-                                    'you closed the popup without finishing the payment'
-                                );
-                            }
-                        })
-                    },
-                    error(err) {
-                        console.log(err)
-                    }
-                })
-
+            $('#tab_donatur_perusahaan').click(function() {
+                $('#donatur-perusahaan').show();
+                $('#donatur-umum').hide();
             })
         });
     </script>

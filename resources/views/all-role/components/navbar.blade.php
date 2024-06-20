@@ -64,12 +64,6 @@
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Admin</a>
                                 </li>
                                 @endif
-                                @if (Auth::user()->role == 'recipient')
-                                <li>
-                                    <a href="/mahasiswa/dashboard"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Admin</a>
-                                </li>
-                                @endif
                                 <li>
                                     <a href="/logout" type="submit"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
