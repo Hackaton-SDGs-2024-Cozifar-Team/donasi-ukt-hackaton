@@ -14,6 +14,7 @@ use App\Http\Controllers\Mahasiswa\DashboardMahasiswaController;
 use App\Http\Controllers\Mahasiswa\StatusMahasiswaController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\RegisterFormController;
+use App\Http\Controllers\SpkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,7 @@ Route::middleware('auth')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
             Route::get('/management-submission',[SubmissionController::class,'index'])->name('submission.index');
+            Route::get('/sistem-pendukung-keputusan',[SpkController::class,'index'])->name('spk.index');
             Route::get('detail-submission/{id_user}', [SubmissionController::class, 'detailSubmission'])->name('submission.detail');
             Route::put('/update-status/{id_donation_registration}/confirm', [SubmissionController::class, 'updateStatus'])->name('submission.updateStatus');
             Route::put('/update-status/{id_donation_registration}/rejected', [SubmissionController::class, 'updateStatusRejected'])->name('submission.updateStatusRejected');

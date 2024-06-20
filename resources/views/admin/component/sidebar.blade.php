@@ -29,6 +29,12 @@
                     <div data-i18n="Analytics">Manajemen Pendaftar</div>
                 </a>
             </li>
+            <li class="menu-item @active('spk.*')">
+                <a href="{{ route('spk.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons fa-solid fa-sitemap"></i>
+                    <div data-i18n="Analytics">SPK</div>
+                </a>
+            </li>
             <li class="menu-item @active('recipient.*')">
                 <a href="{{ route('recipient.index') }}" class="menu-link">
                     <i class="menu-icon tf-icon fa-solid fa-list-check"></i>
