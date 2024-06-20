@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form Register | Donasi UKT</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="../build/assets/app.css">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 </head>
 

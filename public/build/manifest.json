@@ -1,0 +1,17 @@
+{
+  "public/img/landing-page/home-section.png": {
+    "file": "assets/home-section-CKrzncj0.png",
+    "src": "public/img/landing-page/home-section.png"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-B2NyBYlb.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-C1-XIpUa.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}

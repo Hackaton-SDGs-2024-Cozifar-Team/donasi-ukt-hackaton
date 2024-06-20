@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Donasi UKT</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="../build/assets/app.css">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 </head>
 
@@ -34,10 +34,10 @@
             pendidikan yang merata, memberdayakan generasi muda, dan menciptakan masa depan yang lebih adil dan
             berkelanjutan.</h4>
         @if ($checkRegistration == 0)
-            <a href="/form-register" class="button-blue mt-4"><span>Daftar Sekarang</span></a>
+        <a href="/form-register" class="button-blue mt-4"><span>Daftar Sekarang</span></a>
         @else
-            <a href="#" onclick="alert('Anda sudah mengajukan')" class="button-blue mt-4"><span>Daftar
-                    Sekarang</span></a>
+        <a href="#" onclick="alert('Anda sudah mengajukan')" class="button-blue mt-4"><span>Daftar
+                Sekarang</span></a>
         @endif
 
         <button id="scroll-button"
@@ -92,19 +92,19 @@
         <h2 class="bg-black text-white px-8 py-2 mb-14">TIMELINE PENDAFTARAN</h2>
         <div class="text-black flex flex-col">
             @foreach ($timelines as $timeline)
-                <div class="card-timeline flex gap-6">
-                    <div class="flex flex-col items-center">
-                        <div class="w-12 h-12 bg-blue text-white flex justify-center items-center rounded-full">
-                            <i class="ri-calendar-fill"></i>
-                        </div>
-                        <span class="relative block w-[2px] h-[75px] bg-gray-300"></span>
+            <div class="card-timeline flex gap-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-blue text-white flex justify-center items-center rounded-full">
+                        <i class="ri-calendar-fill"></i>
                     </div>
-                    <div>
-                        <h5 class="text-[20px] font-semibold">{{ $timeline->title_timeline }}</h5>
-                        <h6 class="text-gray-500">{{ $timeline->start }} - {{ $timeline->deadline }} </h6>
-                        <p>{{ $timeline->description }}</p>
-                    </div>
+                    <span class="relative block w-[2px] h-[75px] bg-gray-300"></span>
                 </div>
+                <div>
+                    <h5 class="text-[20px] font-semibold">{{ $timeline->title_timeline }}</h5>
+                    <h6 class="text-gray-500">{{ $timeline->start }} - {{ $timeline->deadline }} </h6>
+                    <p>{{ $timeline->description }}</p>
+                </div>
+            </div>
             @endforeach
     </section>
     {{-- pengumuman section --}}
@@ -168,17 +168,17 @@
             </thead>
             {{-- @dd(now()) --}}
             <tbody class="text-center">
-                
-                @if (strtotime($tanggal_pengumuman) < strtotime(now()))
-                    @foreach ($dataDiterima as $item)
-                        <tr class="senin">
-                            <td class="border border-gray-300 py-3">{{ $loop->iteration }}</td>
-                            <td class="border border-gray-300 py-3">{{ $item->student->users->fullname }}</td>
-                            <td class="border border-gray-300 py-3">{{ $item->student->academic_information->faculty }}</td>
-                            <td class="border border-gray-300 py-3">{{ $item->student->academic_information->study_program }}</td>
-                        </tr>
+
+                @if (strtotime($tanggal_pengumuman) < strtotime(now())) @foreach ($dataDiterima as $item) <tr
+                    class="senin">
+                    <td class="border border-gray-300 py-3">{{ $loop->iteration }}</td>
+                    <td class="border border-gray-300 py-3">{{ $item->student->users->fullname }}</td>
+                    <td class="border border-gray-300 py-3">{{ $item->student->academic_information->faculty }}</td>
+                    <td class="border border-gray-300 py-3">{{ $item->student->academic_information->study_program }}
+                    </td>
+                    </tr>
                     @endforeach
-                @else
+                    @else
                     <tr class="senin">
                         <td class="border border-gray-300 py-[50px]" colspan="4">
                             <div class="flex justify-center w-[450px] mx-auto items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
@@ -190,12 +190,13 @@
                                 </svg>
                                 <span class="sr-only">Info</span>
                                 <div>
-                                    <span class="font-medium">Penerima donasi UKT akan di tampilkan tanggal {{ $tanggal_pengumuman }}</span>
+                                    <span class="font-medium">Penerima donasi UKT akan di tampilkan tanggal {{
+                                        $tanggal_pengumuman }}</span>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                @endif
+                    @endif
             </tbody>
         </table>
     </section>
