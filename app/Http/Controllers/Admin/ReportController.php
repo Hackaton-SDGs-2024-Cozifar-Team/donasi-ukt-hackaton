@@ -15,6 +15,7 @@ class ReportController extends Controller
         $tgl_awal = $request->input('tgl_awal');
         $tgl_akhir = $request->input('tgl_akhir');
         $id_periode = $request->input('periode');
+        $id_periode1 = $request->input('periode1');
 
         $periode = Periode::orderBy('school_year', 'desc')->get();
 
@@ -31,8 +32,16 @@ class ReportController extends Controller
             $donaturQuery->whereDate('donation_date', '<=', $tgl_akhir);
         }
 
+        $id_periode1 = $request->input('periode1');
+
+        $penerima = DonationRegistration::query();
+
+        if ($id_periode1) {
+            $penerima->where('id_periode', $id_periode1);
+        }
+
+        $penerima_donasi = $penerima->orderBy('id_periode', 'desc')->get();
         $donatur = $donaturQuery->orderBy('donation_date', 'desc')->get();
-        $penerima_donasi = DonationRegistration::all();
 
         return view("admin.layouts.report", [
             "title" => "Laporan",

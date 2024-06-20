@@ -79,7 +79,7 @@
                             <div class="col-2">
                                 <label for="tgl_awal" class="form-label">Periode</label>
                                 <select class="form-select" id="exampleFormControlSelect1"
-                                    aria-label="Default select example" name="periode">
+                                    aria-label="Default select example" name="periode1">
                                     <option selected disabled><--- Pilih Periode ---></option>
                                     @foreach ($periode as $item)
                                         <option value="{{ $item->id_periode }}">{{ $item->school_year }}</option>
@@ -98,6 +98,7 @@
                                     <th>Nama</th>
                                     <th>Fakultas</th>
                                     <th>Prodi</th>
+                                    <th>Periode</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -108,6 +109,7 @@
                                         <td>{{ $data->student->users->fullname }}</td>
                                         <td>{{ $data->student->academic_information->faculty }}</td>
                                         <td>{{ $data->student->academic_information->study_program }}</td>
+                                        <td>{{ $data->periode->school_year }}</td>
                                         <td>{{ $data->status }}</td>
                                     </tr>
                                 @endforeach
