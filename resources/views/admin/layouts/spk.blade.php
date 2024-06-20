@@ -19,6 +19,7 @@
                             <th>Nama</th>
                             <th>Penghasilan Keluarga</th>
                             <th>Jumlah Tanggungan</th>
+                            <th>Jumlah UKT</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +30,7 @@
                                 <td>{{ $d['name'] }}</td>
                                 <td>{{ $d['penghasilan'] }}</td>
                                 <td>{{ $d['tanggungan'] }}</td>
+                                <td>{{ $d['ukt'] }}</td>
                                 
                             </tr>
                         @endforeach
@@ -45,6 +47,7 @@
                             <th>Nama</th>
                             <th>Penghasilan Keluarga</th>
                             <th>Jumlah Tanggungan</th>
+                            <th>Jumlah UKT</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +58,7 @@
                                 <td>{{ $d['name'] }}</td>
                                 <td>{{ $d['penghasilan'] }}</td>
                                 <td>{{ $d['tanggungan'] }}</td>
+                                <td>{{ $d['ukt'] }}</td>
                                 
                             </tr>
                         @endforeach
@@ -65,6 +69,7 @@
                             <td></td>
                             <td>{{ $penghasilan_terkecil }}</td>
                             <td>{{ $tanggungan_terbesar }}</td>
+                            <td>{{ $ukt_terbesar }}</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -79,6 +84,7 @@
                             <th>Nama</th>
                             <th>Penghasilan Keluarga</th>
                             <th>Jumlah Tanggungan</th>
+                            <th>Jumlah UKT</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -89,6 +95,7 @@
                                 <td>{{ $d['name'] }}</td>
                                 <td>{{ $d['penghasilan'] }}</td>
                                 <td>{{ $d['tanggungan'] }}</td>
+                                <td>{{ $d['ukt'] }}</td>
                                 
                             </tr>
                         @endforeach
@@ -104,6 +111,7 @@
                             <th>Nama</th>
                             <th>Penghasilan Keluarga</th>
                             <th>Jumlah Tanggungan</th>
+                            <th>Jumlah UKT</th>
                             <th>Total</th>
                             <th>Ranking</th>
                         </tr>
@@ -116,6 +124,7 @@
                                 <td>{{ $d['name'] }}</td>
                                 <td>{{ $d['penghasilan'] }}</td>
                                 <td>{{ $d['tanggungan'] }}</td>
+                                <td>{{ $d['ukt'] }}</td>
                                 <td>{{ $d['jumlah'] }}</td>
                                 <td>{{ $loop->iteration }}</td>
                             </tr>
