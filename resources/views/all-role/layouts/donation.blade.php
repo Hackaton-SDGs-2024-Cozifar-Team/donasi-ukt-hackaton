@@ -46,7 +46,7 @@
                 </li>
             </ol>
         </nav>
-        <div
+        {{-- <div
             class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
             <ul class="flex flex-wrap -mb-px">
                 <li class="me-2 cursor-pointer" id="tab_donatur">
@@ -59,7 +59,7 @@
                         aria-current="page">Donatur Perusahaan</a>
                 </li>
             </ul>
-        </div>
+        </div> --}}
 
         <div id="donatur-umum"
             class="w-full py-[100px] bg-white shadow-lg border flex flex-col justify-center items-center">
