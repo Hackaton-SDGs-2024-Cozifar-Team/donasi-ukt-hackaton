@@ -34,7 +34,7 @@ class MainController extends Controller
 
         $timelines = timeline::all();
 
-        $originalDate = $timelines[2]->deadline;
+        $originalDate = $timelines[2]->deadline??"2024-07-25";
 
         $date = new DateTime($originalDate);
 

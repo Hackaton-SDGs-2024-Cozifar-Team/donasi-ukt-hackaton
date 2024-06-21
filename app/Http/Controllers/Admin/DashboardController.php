@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\DetailDonation;
 use App\Models\Donation;
+use App\Models\DonationDeveloper;
 use App\Models\DonationRegistration;
 use App\Models\Periode;
 use Carbon\Carbon;
@@ -20,6 +21,10 @@ class DashboardController extends Controller
         $jumlahDiterima = DonationRegistration::where('status','confirm')->get()->count();
         $jumlahDitolak = DonationRegistration::where('status','rejected')->get()->count();
         $donatur = Donation::where("status","paid")->get()->groupBy("id_user")->count();
+
+        $uangDeveloper = DonationDeveloper::sum("nominal_donation")->get();
+        dd($uangDeveloper);
+
         $donations = Donation::where("status","paid")
         ->get();
         $uangDonasi = 0;

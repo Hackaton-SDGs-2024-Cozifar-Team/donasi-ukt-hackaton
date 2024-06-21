@@ -49,7 +49,7 @@ use App\Util\FormatRupiah;
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Uang Donasi</span>
-                            <h3 class="card-title mb-2">{{ FormatRupiah::Rupiah($uangDonasi) }}</h3>
+                            <h3 class="card-title mb-2">Rp{{ FormatRupiah::Rupiah($uangDonasi) }}</h3>
 
                         </div>
                     </div>
@@ -58,8 +58,8 @@ use App\Util\FormatRupiah;
             </div>
         </div>
         <!-- Total Revenue -->
-        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
-            <div class="card">
+        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4" style="">
+            <div class="card h-100s">
                 <div class="card-body px-0">
                     <div class="tab-content p-0">
                         <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
@@ -88,6 +88,30 @@ use App\Util\FormatRupiah;
         <!--/ Total Revenue -->
         <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
             <div class="row">
+                <div class=" col-12  col-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="/assets/img/icons/unicons/cc-primary.png" alt="Credit Card"
+                                        class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Uang Donasi</span>
+                            <h3 class="card-title mb-2">Rp{{ FormatRupiah::Rupiah($uangDonasi) }}</h3>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="col-6 mb-4">
                     <div class="card">
                         <div class="card-body">
