@@ -59,7 +59,7 @@ use App\Util\FormatRupiah;
         </div>
         <!-- Total Revenue -->
         <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4" style="">
-            <div class="card h-100s">
+            <div class="card h-100">
                 <div class="card-body px-0">
                     <div class="tab-content p-0">
                         <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
@@ -106,8 +106,8 @@ use App\Util\FormatRupiah;
                                     </div>
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Uang Donasi</span>
-                            <h3 class="card-title mb-2">Rp{{ FormatRupiah::Rupiah($uangDonasi) }}</h3>
+                            <span class="fw-semibold d-block mb-1">Uang Donasi Developer</span>
+                            <h3 class="card-title mb-2">Rp{{ FormatRupiah::Rupiah($uangDeveloper) }}</h3>
 
                         </div>
                     </div>

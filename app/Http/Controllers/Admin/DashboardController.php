@@ -22,8 +22,7 @@ class DashboardController extends Controller
         $jumlahDitolak = DonationRegistration::where('status','rejected')->get()->count();
         $donatur = Donation::where("status","paid")->get()->groupBy("id_user")->count();
 
-        $uangDeveloper = DonationDeveloper::sum("nominal_donation")->get();
-        dd($uangDeveloper);
+        $uangDeveloper = DonationDeveloper::all()->sum("nominal_donation");
 
         $donations = Donation::where("status","paid")
         ->get();
@@ -46,6 +45,7 @@ class DashboardController extends Controller
             "jumlahDitolak"=> $jumlahDitolak,
             "donatur"=> $donatur,
             "uangDonasi"=> $uangDonasi,
+            "uangDeveloper"=> $uangDeveloper
         ]);
     }
 
